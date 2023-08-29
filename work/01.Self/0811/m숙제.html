@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #comp{
+        width: 300px;
+        padding: 5px;
+    }
+    #t1{
+        border-collapse: collapse;
+        width: 600px;
+    }
+    #t1 ul{
+        padding: 4px;
+        border: 1px solid;
+        width: 150px;
+        list-style: none;
+        display: inline-block;
+        height: 150px;
+        margin-top: 0;
+    }
+    tbody{
+        display: inline-block;
+        flex-direction: row;
+        width: 600px;
+        overflow: hidden;
+        /* word-spacing: 0; */
+        /* font-size: 0; */
+    }
+    #t1 ul li{
+        /* float: left; */
+        /* display: flex;
+        flex-direction: row; */
+        display: inline-block;
+        width: 150px; 
+        height: 150px; 
+        border: 1px solid #000;
+        text-align: center;
+    }
+    .span {
+        display: block;
+        text-align: center;
+    }
+    .span>a {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+    }
+    #content tbody{
+        border: 1px solid;
+    }
+    .charsize{
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <fieldset>
+            <legend>비동기식통신</legend>
+            <select name="" id="selec" >
+                <option value="brand">제조회사</option>
+                <option value="product_type">제품타입</option>
+                <option value="price_less_than">최고가격</option>
+            </select>
+            <!-- <label for="comp">제조회사</label> -->
+            <input type="text" id="comp"/>
+            <button type="button" onclick="exe()">확인</button>
+            <!-- 이거 지금 비동기식처리라 name이 필요하지 않음 -->
+        </fieldset>
+    </form>
+    <div id="content">
+        <table id="t1">
+            <colgroup>
+                <!-- <col width="120px"/>
+                <col width="*"/>
+                <col width="*"/>
+                <col width="*"/> -->
+            </colgroup>
+            <thead>
+                <!-- <tr>
+                    <th>이미지</th>
+                    <th>제품명</th>
+                    <th>가격</th>
+                    <th>등록일</th>
+                </tr> -->
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        let s_opt = "";
+        function selc(){
+            s_opt = $("#selec option:selected").val();
+
+        };
+        function exe() {
+            //서버호출이라하면
+            // document.forms[0].submit(); //이게서버에 요청하는 문장.(동기식)
+
+            //사용자가 입력한 제조회사명 가져오기
+            let comp = $("#comp").val();
+            // let selectBoxChange = function(value){
+            //     $("comp").val(value);
+            // };
+            // let v_opt = s_opt.val
+            // let s2 = $("selec").val().eq(1);
+            // let s3 = $("selec").val().eq(2);
+            // $("#selec").change(function(){
+            //     let s_opt = $(this).val();
+            //     // console.log($(this).val());
+            // });
+            // console.log(s_opt);
+            
+            let s2 = $("#selec").val();
+            let param = s2+"="+comp;
+
+            if(comp.trim().length > 0){
+                //사용자가 브랜드명을 잘 입력했을경우,
+
+                //서버호출(비동기식) jQuery의 ajax 같은
+                $.ajax({
+                    url: "https://makeup-api.herokuapp.com/api/v1/products.json", //호출하고자_하는_서버_경로
+                    data: param, //"brand="+comp, //서버로_보내고자_하는_파라미터(인자)_없으면안해도됨, 보통 경로에서 ?뒤에있는게 파라미터
+                    type: "get", //전송방식(get/post_택1_문자열로적어줘야함)
+                    dataType: "json", //여기까지가 기본 / 서버로부터_응답되어_오는_자원(return되는_자료형)_보통Json
+                }).done(function(data){ // data는 서버로부터 전달되어 오는 return값이다.
+                    // 요청에 성공했을때 수행하는 곳.
+                    console.log(data); // -> 이게 콘솔창에 출력이 잘 됬다면 '비동기식 통신'이 잘 된것이다.(27개 정도 뜸)
+                    
+                    let msg = "";
+
+                    for(let i = 0; i < data.length; i++){
+                        //여기서 tr을 만들어야함.
+                        msg += "<ul>";
+                        msg += "<li><img src='"+data[i].image_link+"'; width='150px' class='w100'></li>";
+                        msg += "<span class='span'><a href='"+data[i].product_link+"' class='charsize'>"+ data[i].name +"</a></span>"; //이게 동기식으로 페이지를 옮겨 간거임.
+                        msg += "<span class='span'>$"+data[i].price+"</span>";
+                        // msg += "<td>"+data[i].updated_at+"</td>";
+                        msg += "</ul>";
+                    }//for의 끝
+                    $("#t1>tbody").html(msg);
+
+                }).fail(function(err){
+                    // 요청시 오류가 발생했을 때 수행하는 곳
+                });
+
+            }
+
+        };
+    </script>
+</body>
+</html>

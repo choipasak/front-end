@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+#header {
+    border-bottom: 1px solid rgb(255, 195, 84);
+    width: 100%;
+    height: 78px;
+}
+#header>ul.Mc {
+    border: 1px solid pink;
+    margin: 0;
+    padding: 0;
+    width: 1170px;
+    height: 78px;
+    margin: 0px auto;
+    word-spacing: 0;
+    overflow: hidden;
+    font-size: 0;
+}
+#header>ul.Mc>li {
+    display: inline-block;
+    list-style: none;
+    text-decoration: none;
+    width: 167px;
+    line-height: 78px;
+    text-indent: -9999px;
+    text-align: center;
+}
+#header>ul.Mc>li>a {
+    display: block;
+    background-size: 78px;
+}
+#header>ul.Mc>li>a>span.menu {
+    border: 1px solid green;
+    display: inline-block;
+    background: url(../0727_image/이미지/mc.png) no-repeat left top;
+    width: 100%;
+}
+#header>ul.Mc>li>a>span.c2 {background-position: -164px top;}
+#header>ul.Mc>li>a>span.c3 {background-position: -328px top;}
+#header>ul.Mc>li>a>span.c4 {background-position: -492px top;}
+#header>ul.Mc>li>a>span.c5 {background-position: -656px top;}
+#header>ul.Mc>li>a>span.c6 {background-position: -820px top;}
+#header>ul.Mc>li>a>span.c7 {background-position: -984px top;}
+----------------------------------------------------------------
+#header {
+    width: 970px;
+    height: 140px;
+    margin: auto;
+}
+#header>h1 {
+    width: 181px;
+    height: 59px;
+    background: url(../img/logo.png) no-repeat;
+    text-indent: -9999px;
+}
+header>ul.gnb { /* ul태그에 클래스가 gnb인 요소 */
+    width: 100%;
+    height: 50px;
+    font-size: 0;
+    word-spacing: 0;
+    overflow: hidden;
+}
+header>.gnb>li {
+    display: inline-block;
+    width: 194px;
+    height: 100%; /*50px이라함*/
+    background-color: #ff5001;
+    text-align: center;
+}
+header>.gnb>li a {
+    display: block;
+    width: 194px; /*이거질문 백퍼됨?*/
+    height: 100%;
+    background-size: 24px;
+    text-align: center;
+}
+header>.gnb>li a>span.menu {
+    display: inline-block;
+    height: 20px;
+    margin-top: 15px;
+    line-height: 20px; /* 칸 안에 자연스럽게 사방 가운데 정렬 */
+    color: white;
+    font-weight: bold;
+    background: url(../img/gnb_bult.png) no-repeat;
+    font-size: 16px;
+    padding-left: 30px;
+    /* text-indent: 30px; */
+}
+#header>ul.gnb>li>a>span.m2 {background-position: left -22px;}
+#header>ul.gnb>li>a>span.m3 {background-position: left -44px;}
+#header>ul.gnb>li>a>span.m4 {background-position: left -66px;}
+#header>ul.gnb>li>a>span.m5 {background-position: left -88px;}
+
+#header>ul.gnb>li:hover {background-color: #e24c09;}

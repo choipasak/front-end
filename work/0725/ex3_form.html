@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th {
+            text-align: right;
+        }
+        input[type=text], input[type=password], select {
+            padding: 7px;
+            border-radius: 15px;
+            width: 130px;
+            border: 1px solid #636363;
+            background-color: rgb(242, 242, 235);
+        }
+        #s_name {
+            width: 200px;
+        }
+        .but {
+            text-align: right;
+        }
+        fieldset {
+            border: 1px double rgb(153, 153, 153);
+            background-color: #caddcf9f;
+            border-radius: 10px;
+            width: 650px;
+        }
+        legend{
+            padding: 5px;
+            text-align: center;
+            color: rgb(134, 134, 134);
+            border: 3px double pink;
+            background-color: rgba(255, 227, 232, 0.913);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <form method="" action="">
+            <fieldset>
+                <legend>폼 연습</legend>
+
+                <table summery="회원가입테이블">
+                    <tbody>
+                        <tr>
+                            <th><label for="s_id">아이디</label></th>
+                            <td>
+                                <input type="text" id="s_id" name="u_id"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_pw">비밀번호</label></th>
+                            <td>
+                                <input type="password" name="s_pw" id="u_pw" placeholder="enter your password"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_pw1">비밀번호 재입력</label></th>
+                            <td>
+                                <input type="password" name="s_pw1" id="u_pw1"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_name">이름</label></th>
+                            <td>
+                                <input type="text" id="s_name" name="u_name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_loc">사는 곳</label></th>
+                            <td>
+                                <!-- <input type="text" id="s_loc" name="u_loc"/> -->
+                                <select id="s_loc" value>
+                                    <option>::선택하세요::</option>
+                                    <option value="Seoul">서울</option>
+                                    <option value="Gyeonggi">경기</option>
+                                    <option value="Incheon">인천</option>
+                                    <option value="Busan">부산</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_hobby">취미</label></th>
+                            <td>
+                                <input type="checkbox" id="s_hobby" value="독서" name="u_hobby"/>독서 &nbsp;&nbsp;
+                                <input type="checkbox" id="s_hobby1" value="영화감상" name="u_hobby"/>영화감상 &nbsp;&nbsp;
+                                <input type="checkbox" id="s_hobby2" value="음악감상" name="u_hobby"/>음악감상 &nbsp;&nbsp;
+                                <input type="checkbox" id="s_hobby3" value="게임" name="u_hobby"/>게임 &nbsp;&nbsp;
+                                <input type="checkbox" id="s_hobby4" value="운동" name="u_hobby"/>운동
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_gen"></label>성별</th>
+                            <td>
+                                <input type="radio" name="u_gen" id="s_gen" value="female"/>여성 &nbsp;
+                                <input type="radio" name="u_gen" id="s_gen1" value="male"/>남성
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_desc">설명</label></th>
+                            <td>
+                                <textarea name="u_desc" id="s_desc" cols="60" rows="10"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="s_email">이메일</label></th>
+                            <td>
+                                <input type="text" name="u_email" id="s_email">
+                                @
+                                <select name="u_email" id="s_email1">
+                                    <option>::선택하시오::</option>
+                                    <option value="Naver">naver.com</option>
+                                    <option value="Google">gmail.com</option>
+                                    <option value="Daum">daum.net</option>
+                                    <option value="">직접입력</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="but" colspan="2">
+                                <button value="save">저장</button>
+                                <button value="reset">취소</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

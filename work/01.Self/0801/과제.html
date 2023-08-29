@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+            margin: 10px;
+            border: 1px solid rgb(94, 110, 190);
+            font-size: 80px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 300px;
+            color: rgb(207, 156, 165);
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <label for="std">점수 입력 : </label>
+        <input type="number" name="std_sc" id="std"/>
+        <button type="button" onclick="division()">확인</button>
+    </form>
+    <div id="box"></div>
+    <script>
+        function division() {
+
+            let a = document.getElementById("std").value;
+            let std_score = parseInt(a);
+
+            let box = document.getElementById("box");
+
+            if(std_score >= 90) {
+                box.innerText = "A";
+            } else if (std_score >= 80 && std_score < 90) {
+                box.innerText = "B";
+            }else if (std_score >= 70 && std_score < 80) {
+                box.innerText = "C";
+            }else if (std_score >= 60 && std_score < 70) {
+                box.innerText = "D";
+            }else {
+                box.innerText = "F!";
+            }
+        }
+
+    </script>
+</body>
+</html>

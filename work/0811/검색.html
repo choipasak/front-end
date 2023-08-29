@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #comp{
+            width: 300px;
+            padding: 5px;
+        }
+        #t1{
+            border-collapse: collapse;
+            width: 600px;
+            margin-top: 5px;
+        }
+        #t1 th,#t1 td{
+            padding: 4px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <h2>비동기식</h2>
+        <label for="ss"></label>
+        <select name="" id="selc" onchange="change(this.value)">
+            <option id="0" value="제조회사">제조회사</option>
+            <option id="1" value="제품타입">제품타입</option>
+            <option id="2" value="최고가격">최고가격</option>
+        </select>
+        <input type="text" id="ii"/>
+        <button type="button" onclick="exe()">검색</button>
+    </form>
+    <div id="list">
+        <table id="t1">
+            <colgroup>
+                <col width="120px"/>
+                <col width="*"/>
+                <col width="60px"/>
+                <col width="150px"/>
+            </colgroup>
+            <thead>
+                <!-- <tr>
+                    <td>이미지</td>
+                    <td>제품명</td>
+                    <td>가격</td>
+                    <td>등록일</td>
+                </tr> -->
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        function change(click){
+            //select값을 가져오기
+            /*
+            let opt1 = $("#selc").append("<option value='brand'>제조회사</option>");
+            let opt2 = $("#selc").append("<option value='product_type'>제품타입</option>");
+            let opt3 = $("#selc").append("<option value='price_less_than'>최고가격</option>");
+            */
+
+            //select의 option중 클릭한 값을 리턴!
+        };
+        function exe(){
+            let list = $("#ii").val();// 일단 이걸로 input의 value값을 가져옴
+            
+            //입력값이 말도안되는거 쓰는거 방지
+            if(list.trim().length > 0){
+                // 제대로 잘 썻다면~
+                
+                // 사용자가 입력한 제조회사명 가져오기
+                
+                let s_var = $("#selc").val();
+                
+                
+
+                //아쟉사용(비동기처리도구? XHR)
+                $.ajax({
+                    url: "https://makeup-api.herokuapp.com/api/v1/products.json",
+                    data: {"brand": list},
+                    type: "get",
+                    dataType : "json",
+                }).done(function(data){
+                    console.log(data);
+
+                    let msg = "";
+                    
+                    for(let i = 0; i < list.length; i++){
+                        msg += "<ul>"
+                        msg += "<li><img src='"+data[i].image_link+"'width='100px'; class='w100'></li>"
+                        msg += "<span><a href=''>"+data[i]+"</a></span>"
+                        msg += "<li><a href=''></a></li>"
+                        msg += "<li><a href=''></a></li>"
+                        msg += "</ul>"
+                    }
+                }).fail(function(err){
+                    // 요청시에 에러가 났을때 수행하는곳
+                });
+            }
+        };
+    </script>
+</body>
+</html>

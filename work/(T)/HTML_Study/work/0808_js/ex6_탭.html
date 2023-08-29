@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        #tabs>div{
+            background-color: #fff;
+        }
+        .w500{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="contents" class="w500">
+        <div id="tabs">
+            <!-- 누르는 탭들 -->
+            <ul>
+                <li><a href="#t1">첫번째</a></li>
+                <li><a href="#t2">두번째</a></li>
+                <li><a href="#t3">세번째</a></li>
+            </ul>
+
+            <!-- 각 탭의 내용들 -->
+            <div id="t2">두번째tab의 내용입니다.</div>
+            <div id="t1">
+                Next.js가 버전 13으로 넘어가면서 기존 pages 폴더 방식에서 app 폴더 방식으로 넘어갔는데요.<br/>
+                Next.js에서는 App Router라고 합니다.<br/>
+                Remix Framework이나 기타 다른 자바스크립트 메타 프레임워크들이 app 폴더를 많이 쓰거든요.<br/>
+                Next.js도 pages 폴더를 유지시키면서 새로운 기능을 구현하려니까 app 폴더를 이용하기로 했나 봅니다.<br/>
+                그럼 여기서 잠깐, 제가 예전에 쓴 Next.js 13 버전 살펴보기 글을 읽어 보시는 걸 추천드립니다.<br/>
+                링크 --> Next.js 13 살펴보기 - 폴더 방식 라우팅과 중첩 레이아웃 이해<br/>
+                이 글에서 app router 방식에 대해 잘 설명하고 있으니 참고 바랍니다.<br/>
+            </div>
+            <div id="t3">
+                파리생제르맹(PSG)에서 이강인과 '브로맨스'를 뽐내 국내 축구팬들의 호감을 산
+                 브라질 '축구 스타' 네이마르의 이적설이 제기됐다.<br/>
+                프랑스 매체 레퀴프는 7일(한국시간) 네이마르가 PSG 구단에 친정팀 <br/>
+                FC바르셀로나(스페인) 복귀 뜻을 전했다고 보도했다.<br/>
+                우스만 뎀벨레의 PSG 이적이 유력해진 바르셀로나가 
+                네이마르를 다시 데려오려 한다는 것이다.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            $("#tabs").tabs();
+        });
+    </script>
+</body>
+</html>

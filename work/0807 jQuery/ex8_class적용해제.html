@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{
+            font-size: 20px;
+            font-weight: bold;
+            color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="적용" id="btn"/>
+    <div>
+        <p>야호</p>
+        <em>월요일</em>
+        첫번째 div
+    </div>
+    <div>
+        <p>몰디브</p>
+        <p>산토리니</p>
+        <p>그루토</p>
+    </div>
+    <p>가자~~@!</p>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            //div들 중 첫번째 div의 자식요소들에게
+            // 글꼴색을 red로 변경해 보자
+            // let count = $("div")[0].children.length; 이건 길이를 알아보는거여서 에러가 나지 않았던것같다
+            // alert(count);
+            // $("div")[0].children().css("color","#f00"); //children은 원래 배열이여서 에러가 남. 이 문장은 그냥 오류다!
+            //[0]로 인해 jquery문법이 아니게 됨! 그래서 css함수를 사용할 수 없다.
+            $("div").eq(0).children().css("color", "#f00"); 
+            //[]같이 배열을 선택해주고 싶을 때, 제이쿼리의 문법인 eq()를 사용해줘야 제이쿼리문법에서 벗어나지 않는다.
+            //children에 ()를 붙여주면 그 태그의 자식요소인 개체들을 모두 말하는 것!
+            //children의 ()안에 원하는태그를 써서 그 태그만 선택할수도 있음
+
+            //아이디가 btn인 요소를 클릭했을때!
+            let flag = true;
+            $("#btn").bind("click",function(){
+                //flag가 true일때
+                if(flag){
+                    //두번째 div의 자식 요소들에게 test라는 클래스를 적용!
+                    $("div").eq(1).children().addClass("test");//test클래스를 미리 만들어놓고 addClass로 클래스를 더해준다~
+                    
+                    //지금 클릭이벤트를 발생시킨 버튼객체(this)의 값(value) 변경
+                    $(this).val("해제");
+                }else{
+                    //두번째 div의 자식들 중 p태그들에게 적용된 test클래스를 삭제한다.
+
+                    $("div").eq(1).children().removeClass("test");
+                    $(this).val("적용");
+                }
+                flag = !flag; //flag가 true->false, false->true 가 되는 토글 형태의 동적화가된다.
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map{
+            margin-top: 5px;
+            border-top: 2px solid #929292;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>카카오주소</h2>
+        <form>
+            <label for="address">주소</label>
+            <input type="text" name="address" id="address" style="width: 500px; padding: 4px;"/>
+            <button type="button" onclick="adrs()">검색</button>
+        </form>
+    </div>
+    <div id="map" style="width: 600px; height: 500px;"></div>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9548a63a32ab8fe887a678452c3f0411&libraries=services"></script>
+    <script>
+        let address = document.getElementById("address");
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };  
+        // 위의 내용들은 바로 수행되는 것들.
+
+        // 지도를 생성합니다    
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+        
+        adrs(null); // 처음에 줄 값이 없어서 배려차원으로 null값을 넣어준다.
+
+        function exe() {
+            //검색 버튼이 클릭했을 때마다 호출되는 곳!
+
+            //1. 사용자가 입력한 주소값을 가져온다.
+            let addr = address.value;
+            
+            if(addr.trim().length < 1){
+                alert("주소를 입력하시요");
+                address.value = ""; //초기화
+                address.focus();
+            }else{
+                adrs(addr); // 주소 넣었으니까, 지도 보여달라고 함수 호출함
+            }
+        };  
+
+        function adrs(addr1) { // adrs()로 감싸준 이유는 안의 내용들이 일회성이여서 검색할때마다 사용하기 위해 함수로 감싸준 것.
+            if(addr1 == null){ // 만약 인자값이 null값이면!
+                addr1 = "서울특별시 마포구 백범로 23"; // 처음에 이 주소로 찍어라~
+                // QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+            }
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder = new kakao.maps.services.Geocoder();
+            
+            // 주소로 좌표를 검색합니다
+            geocoder.addressSearch(addr1, function(result, status) {
+            
+                // 정상적으로 검색이 완료됐으면 
+                 if (status === kakao.maps.services.Status.OK) {
+            
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            
+                    // 결과값으로 받은 위치를 마커로 표시합니다
+                    var marker = new kakao.maps.Marker({
+                        map: map,
+                        position: coords
+                    });
+            
+                    // 인포윈도우로 장소에 대한 설명을 표시합니다
+                    var infowindow = new kakao.maps.InfoWindow({
+                        content: '<div style="width:150px;text-align:center;padding:6px 0;">'+ addr1 +'</div>'
+                    });
+                    
+                    infowindow.open(map, marker);
+            
+                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                    map.setCenter(coords);
+                } 
+            });    
+        }
+    </script>
+</body>
+</html>

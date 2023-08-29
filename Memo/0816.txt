@@ -1,0 +1,100 @@
+### 0816
+
+깃과 깃허브
+~JAVA~
+
+리액트는(자바스크립트, 바닐라코드, jquery문법 사용x)
+
+### git
+
+git bash
+pwd : 현재 내가 보고있는 폴더의 경로(확인용)
+ls(list) : 현재 내가 존재하는 경로의 폴더를 리스트로 보요줌 
+
+ls -l 현재 내가 존재하는 위치의 폴더들의list를 좀더 상세하게 권한을 알려줌. 자세한 정보 표시
+
+clear 지금까지 터미널에 출력된 내용들이 모두 지워지고 처음시작화면처럼 보여줌
+
+ls -a 숨겨진 파일까지 다보여줌
+
+cd(change directory) 이동할폴더명 : 현재 파일 경로 이동
+
+mkdir (make directory) 만들폴더명 : cmd로 폴더만들기
+
+touch 파일 만들기
+
+start . 현재 위치에 있는 모든 폴더, 파일이 담긴 폴더 열기
+
+start 만든폴더명(확장타입까지) : 만든 파일 열기
+
+cd .. : 바로 상위 폴더로 이
+
+cd ../.. : 전전폴더로 나가
+
+cd C:/ 절대경로로 c드라이브로 이동하겟다
+
+자주 바뀌지 않는 파일은 절대 경로로 작성해서 고정해 주는게 좋다.
+
+cmd에서 컨v 는 shift+insert
+
+폴더명이 기억이 안나면 첫문자 작성후tab
+
+rm(remove) 파일명 : 파일지우기
+ 
+rm(remove) -rf 파일명 : 폴더지우기
+
+폴더를 만들면 항상처음으로 깃저장소를 만들어줘야한다
+ㄴ git init(initialize) - 명령어임!
+ㄴ 건들면 안됨
+ㄴ 이렇게 만들면 그 폴더는 git으로 관리가능한 폴더가 된것
+ㄴ (master) 이라는 표시가 되는데 이건 가장 근본.brach라고 생각하면 된다. main stream으로 생각. 깃을 관리되고 있는 폴더라는 표시
+ㄴ (main)이라고 나올 수도 있음
+ㄴ 최신버전은 main이라고 적혀있는데 master라는 단어가 인종차별이래서~
+ㄴ 또 git init 을 치면 .git이 초기화됨 이건 한번만 치는것임 가장 바깥쪽 폴더에 딱! 한번! 작성하면 된다!!@
+ㄴ 이게 local repository생성하는법
+
+mkdir Idol && cd Idol
+ㄴ 폴더 만들고 바로 들어가는 방법
+
+git status 상태창처럼 git의 상태를 말해줌. 상태를 볼때 사용하는 명령어
+ㄴ untracked files는 아직 git으로 관리되지 않는 파일들을 보여줌(working directory)
+ㄴ 관리하고 싶다면 git add 파일명
+ㄴ 그럼 인지공간으로 이동함(staging area)에서 대기중
+ㄴ 그리고 commit하면 git local repository로 이동하고 도장찍히는 개념
+ㄴ 파일생성(working directory) ->git add-> 파일에 이상이없으면(staging area)수정하면 다시 working area로 돌아감 ->commit-> 더이상 수정.에러 없는 파일만(git local repository깃저장소)
+ㄴ git commit -m : 커밋한 파일에 대한 메세지 남기는거 주석처리같은거, 한줄밖에 못씀
+ㄴ git commit : vsc와 연결되면서 커밋 메세지를 저장해주는 창이 나옴
+ㄴ 누가,무엇을 작성했는지 같은 거 적어주는게 좋음
+ㄴ 메세지를 남길라면 내가 누구인지 이메일이 뭔지 먼저 등록해줘야함 그래야 나중에 기록이남음
+ㄴ 공용컴터면 등록할때 global로 등록하면 안됨(전역변수개념)
+ㄴ 등록한거 확인하려면 git config --list
+ㄴ 그리고 다시 커밋
+ㄴ 커밋 확인은 git log
+ㄴ 계속 status 를 쳐서 상태를 확인
+ㄴ 빨간색으로 나온것들이 커밋이 안된애들
+ㄴ git add. 빨간색으로 나온애들 다 add하겟다는 의미
+ㄴ git log --oneline 로그 심플하게 보여줌
+ㄴ add와 commit!
+ㄴ (END)로 나가고 싶다면 Q!
+
+git kraken? 깃 크라켄
+이라고 git에서 제공하는 git gui가 잇
+여기서 add와 commit이 더 쉬움!
+
+자잘한 commit이 필요함
+ㄴ 겜에서 세이브포인트 개념임
+ㄴ 바로 직전 커밋 수정은 git commit --amend
+ㄴ 방금 한 커밋 재수정
+
+git ignore
+ㄴ git의 관리 아래서 벗어나게 함
+ㄴ 공개되면 안되는 파일들을 외부로 유출되면 안되는 것들을 git ignore라는 파일로 관리해준다.
+ㄴ 아니면 특정개발자의 특정한 설정파일같은것도
+ㄴ touch .gitignore을 만들어서 안에 '비밀파일.확장자' 를 저장해준다.
+ㄴ add .  하면 제외되고 add된다
+ㄴ 버전관리에서 빼고싶은애들 넣어준다
+ㄴ 공유하면 안되는애들 다 넣기
+ㄴ 뒤에 확장자 타입으로 한번에 묶어서 넣는 경우가 많음
+
+git restore --staged .
+ㄴ 방금 add햇던애들 취소한다

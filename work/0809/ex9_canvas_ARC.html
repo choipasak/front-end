@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can1{
+            border: 3px dotted black;
+        }
+    </style>
+</head>
+<body>
+    <h1>canvas 연습</h1>
+    <canvas id="can1" width="600" height="300"></canvas>
+
+    <script>
+        window.onload = function(){
+            let vas = document.getElementById("can1");
+            let ctx = vas.getContext("2d");
+
+            if(ctx) {
+                ctx.strokeStyle = "#00f";
+                ctx.fillStyle = "#f00";
+                ctx.lineWidth = 5;
+
+                ctx.beginPath(); //시작
+                //arc(호의중심점 x좌표, 호의중심점 y좌표, 반지름, 시작위치, 끝위치, 그리는 방향->시계방향(false) or 반시계방향(true)); 
+                //그리는 방향 기본값은 반시계방향!
+                ctx.arc(150, 150, 100, 1.5*Math.PI, 2*Math.PI, false); //호의 시작,끝 위치를 Math.PI로 잡는다!
+                // ctx.fill();
+                ctx.stroke();
+
+                let degrees= 173;
+                let radians = (Math.PI/180)*degrees;
+                ctx.beginPath();
+                ctx.arc(480,150,100,0,radians);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.beginPath();
+                let a = 270;
+                let alpha = (Math.PI/180)*a;
+                ctx.arc(120,190,100,0,alpha);
+                // ctx.fill();
+                ctx.stroke();
+
+            }
+
+        };
+    </script>
+</body>
+</html>

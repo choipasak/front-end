@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 150px;
+            border: 1px solid blue;
+            text-align: center;
+            line-height: 150px;
+            font-size: 30px;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <label for="age">나이</label>
+        <input type="text" name="u_age" id="age"/>
+        <button type="button" onclick="exe(this.form)">확인</button>
+        <!-- 
+            this는 표기된 해당 객체를 의미한다. 여기서는 <button....>이다.
+            그리고 this.form은
+            <button...>가 포함된 폼 객체 전체를 의미한다.
+            즉, exe함수를 호출할 때 인자로 폼전체를 전달한다.
+         -->
+    </form>
+    <br/>
+
+    <div id="box"></div>
+
+    <script>
+        let box = document.getElementById("box");
+
+        function exe(frm) {
+            // 인자 frm은 form전체를 말한다.
+
+            // 그리고 폼 안에 있는 요소를을 접근할 때는
+            // id가 아니라 name으로 접근해야 한다.
+            let age = parseInt(frm.u_age.value); // id로 접근하는거랑 차이가 없으니 아무래도 길이가 짧은 name으로 접근하는것이 호!
+            let msg = "";
+
+            if (age >= 70) {
+                msg = "노년";
+            }else if (age >= 60) {
+                msg = "60대";
+            }else if (age >= 50) {
+                msg = "50대";
+            }else if (age >= 40) {
+                msg = "40대";
+            }else if (age >= 30) {
+                msg = "30대";
+            }else if (age >= 20) {
+                msg = "20대";
+            }else if (age >= 10) {
+                msg = "10대";
+            }else {
+                msg = "어린이 또는 유아";
+            }
+            box.innerText = msg;
+        }
+    </script>
+</body>
+</html>

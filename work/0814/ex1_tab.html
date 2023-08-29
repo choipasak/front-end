@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- 
+        저 주소에서 앞에 // 의 의미는 지금 내가 사용하고 있는 프로토콜을 따르겠다는 뜻인데,
+        만약 먹히지 않는다면 앞에 https:를 적어주면 된다.
+    -->
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+</head>
+<body>
+    <!-- 
+        탭을 만들땐
+        1. 탭이 있을 공간 (ul, ol)
+        2. div로 누른 탭의 내용이 들어갈 공간
+    -->
+    <div id="myTab">
+        <ul>
+            <li><a href="#tab1">Tab1</a></li>
+            <li><a href="#tab2">Tab2</a></li>
+        </ul>
+        <div id="tab1">Tab1의 내용입니다.</div>
+        <div id="tab2">Tab2의 내용입니다.</div>
+    </div>
+
+    <button type="button" id="enable">사용가능</button>
+    <button type="button" id="disable">사용불가능</button>
+    <br/>
+    <button type="button" id="addTab">탭 추가</button>
+    <br/>
+    <label for="idx">인덱스 : </label>
+    <input type="text" id="idx"/>
+    <!-- 인덱스값을 입력창에 입력하면 해당하는 탭이 삭제되는걸 만든다 -->
+    <button type="button" id="delTab">탭 삭제</button>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script>
+        
+        // 원하는 내용을 작성(문법에 맞게 작성해서! 중괄호가 꼬이는게 없게)
+        // 중괄호는 진짜 중요! 중괄호의 범위와 tab의 라인을 맞춰주는게 중요하다!
+        
+        $(function(){
+            $("#myTab").tabs({ //tabs()가 탭을 만들어줌
+                // disabled:[1], //두번째 탭 비활성화
+            });
+
+            // 이벤트 등록해볼게
+            $("#enable").click(function(){
+                // id="enable"을 가진 버튼을 클릭했을때,
+                $("#myTab").tabs("enable",1); // 두번째 인자는 index값, 두번째 탭 활성화
+                // 여기에 중괄호 열고 {enabled:[1], } 이렇게 써줘도 되는데 어차피 1개니까 위에처럼 작성해줌
+            });
+            $("#disable").click(function(){
+                // id="disable"을 가진 버튼을 클릭했을때,
+                $("#myTab").tabs("disable",1); // 두번째 인자는 index값, 두번째 탭을 비활성화
+            });
+
+            // 탭 추가 이벤트
+            // 탭 추가 이벤트 등록 : jquery-UI 1.9.2버전에서 확인할 수 있다.
+            // 근데 연결된 내용까지 같이 추가가 되서 add 하는게 의미가 없어짐
+            let count = 0; // tab
+            $("#addTab").click(function(){
+                //탭추가 버튼을 클릭했을때
+                
+                $("#myTab").tabs("add", "#tab1", "NewTab"+(++count)); // id="tab1"이 가지고 있는거(내용)를 NewTab에 넣겠다
+                // count는 탭옆에 숫자 붙이기위한 용도
+            });
+            
+            $("#delTab").click(function(){
+                // $("#myTab").tabs("remove", 1); // 저 1이 index값
+                $("#myTab").tabs("remove", parseInt($("#idx").val())); 
+                //QQQQQQQQQQQQQQQQQQQQQQQQQQQQindex가  
+            });
+
+            // 모달창? 못알창? 모달창!(modal!)
+        });
+        
+    </script>
+</body>
+</html>

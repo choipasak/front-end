@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can1{
+            border: 5px double black;
+        }
+    </style>
+</head>
+<body>
+    <h1>canvas 연습</h1>
+    <canvas id="can1" width="600" height="300"></canvas>
+    
+
+    <script>
+        window.onload = function(){
+            let vas = document.getElementById("can1");
+            let ctx = vas.getContext("2d");
+
+            if(ctx) {
+                
+                //글씨도 쓸 수 있다
+                let str = "한국ICT협회";
+
+                ctx.shadowColor = "#000";
+                ctx.shadowOffsetx =3;
+                ctx.shadowOffsety =3;
+                ctx.shadowBlur = 10; //4개가 그림자 음영주기 한세트
+
+                ctx.fillStyle = "rgba(200,150,150,1)"; //#00f
+
+                ctx.fillRect(20,20,200,100);
+
+                ctx.fillStyle = "lemonchiffon";
+                ctx.shadowColor = "rgba(0,100,100,0.5)"
+                ctx.shadowOffsetx =5;
+                ctx.shadowOffsety =5;
+                ctx.shadowBlur = 15;
+                ctx.font = "40pt Verdana"
+                ctx.fillText(str,250,200);
+                
+                //보통 이미지도 캔버스크기에 맞게 제작해서 가져다 놓는 경우도 많다!
+                
+            }
+
+        };
+    </script>
+</body>
+</html>

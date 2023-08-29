@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1 {
+            width: 300px;
+            border-collapse: collapse;
+        }
+        #t1 th, #t1 td {
+            border: 1px solid green;
+            padding: 4px;
+        }
+        #t1 caption {
+            text-indent: -9999px; 
+            height: 0;
+            /* 캡션을 안보이게한다음 없애버렸음 */
+        }
+        #t1>thead>tr:first-child>td { /* thead안에 첫번째 tr안에 td를 선택한거임 */
+            text-align: right;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" id="frm">
+        <label for="s_name">이름</label>
+        <input type="text" name="u_name" id="s_name"/>
+        <br/>
+        <label for="s_phone">연락처</label>
+        <input type="tel" name="u_phone" id="s_phone"/>
+        <br/>
+        <input type="button" value="확인" id="btn"/>
+        <!-- 위 버튼을 클릭할 때 사용자가 입력한 이름과
+        연락처들을 가지고 아래의 table에 행으로 추가! -->
+    </form>
+
+    <table id="t1">
+        <caption>행추가 테이블</caption>
+        <thead>
+            <tr>
+                <td colspan="3">
+                    <input type="button" value="추가" name=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>연락처</th>
+                <th>삭제</th>
+
+            </tr>
+        <tbody></tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        //jQuery시작
+        $(function(){//id="btn"인 버튼을 누를때마다 입력값 받아서 행추가
+        let idx = 1;
+            $("btn").click(function(){
+                let name = $("s_name").val();
+                let phone = $("s_phone").val();
+
+                let str = "<tr onmouseover='regIdx(this);'>"; // ""안에 함수작성할땐 ''를 써줬어야
+                str += "<td>" +(idx++)+ "</td>"; //1번째열 번호자동추가 
+                str += "<td>" +name+ "</td>"; //2번째열 이름 입력값추가 
+                str += "<td>" +phone+ "</td>"; //3번째열 연락처 입력값 추가
+                str += "<td><input type='button' value='삭제' onclick='del()'></td>"; //4번째열 버튼추가
+                str += "</tr>"//여기까지가 행 1개 추가하는 양식
+
+                //str tbody에 추가
+                $("t1>tbody").append(str); //이러면 행추가 끝남
+
+            });
+        });
+        function regIdx(ff) {
+            let a = document.getElementById("t1");
+            a.rowIdx = ff.rowIndex;;
+        }
+        function del() {
+        }
+
+
+    </script>
+</body>
+</html>

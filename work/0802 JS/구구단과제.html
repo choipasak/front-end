@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 3px solid pink ;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <!-- <input type="button" value="2단" id="dan" name="2dan" onclick="multi()"/>
+        <input type="button" value="3단" id="dan" name="3dan"/> -->
+        <!-- <label for="m1">2단</label> -->
+        <input type="button" name="dan" id="dan2">
+
+        
+    </form>
+    <div id="box"></div>
+    <script>
+
+        let box = document.getElementById("box");
+
+        function multi() {
+            let a = 
+
+            let msg = "";
+
+            switch (value) {
+                case "2단" :
+                case "3단" :
+                case "4단" :
+                case "5단" :
+                case "6단" :
+                case "7단" :
+                case "8단" :
+                case "9단" :
+
+                    let a = parseInt(gg.name.value);
+                    for(let i = 1; i <= 9; i++) {
+                        let a = parseInt(value);
+                        
+                        let out = document.write(a +"*"+ i +"="+a*i);
+                        
+                        msg += out + "<br/>";
+                    }
+                    box.innerHTML = msg;
+                    break;
+            }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1 {
+            border-collapse: collapse;
+            width: 300px;
+        }
+        #t1 td{
+            border: 1px solid;
+
+        }
+    </style>
+</head>
+<body>
+    <table id="t1">
+        <colgroup>
+            <col width="200px"/>
+            <col width="*"/>
+        </colgroup>
+        <tbody>
+            <tr onmouseover="overTr(this)" onmouseout="outTr(this)">
+                <td>항목1</td>
+                <td>비고</td>
+            </tr>
+            <tr onmouseover="overTr(this)" onmouseout="outTr(this)">
+                <td>항목1</td>
+                <td>비고</td>
+            </tr>
+            <tr onmouseover="overTr(this)" onmouseout="outTr(this)">
+                <td>항목1</td>
+                <td>비고</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function overTr(aa) {
+            aa.style.backgroundColor = "lightblue";
+        }
+        function outTr(vv) {
+            vv.style.backgroundColor = "#fff";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+0809
+
+bind 와 click의 차이
+- bind("어떤 이벤트", fuction(){}); 어떤 이벤트를 적용하겠다
+- click() : 클릭이벤트.뿐임 
+
+duration이벤트 : 해당하는 태그의? 시간계산해주는 이벤트
+어떤 이름을 보고 기능이 무엇인지 아는것 : 시멘틱태그!
+* 시멘틱태그(simentic tag)란?
+ㄴ 방대한 양의 웹문서가 생기면서, 문서구조의 큰 구조를 만듬
+   사이트의 구조를 파악하기 용이할 수 있도록 도와주기 위해 만들어진 <태그>다.
+bind함수 다시 거둬?오는 함수 : unbind 함수
+
+ㅡㅡㅡㅡㅡㅡㅡ
+HTML5에 대해서
+ㅡㅡㅡㅡㅡㅡㅡ
+
+- datalist
+ㄴ 태그 중 하나고 자식요소로 option태그를 가지고 있음
+ㄴ input태그의 list속성값 = datalist id값
+ㄴ input칸에 사용자의 입력 데이터 값도 받음(select와의 차이점)
+ㄴ option의 value값들 중 문자 하나를 입력하면 자동완성기능 제공
+ㄴ option의 생성 개수만큼, dropbox처럼 출력됨
+
+
+- input type = date, time, week, email, color, ...등등등
+ㄴ 기존의 브라우저가 가지고 있는 ui로 브라우저에 나타내줌
+ㄴ color가 띄우는 창에서 스포이드 아이콘을 누르면 원하는 	색의 픽셀단위로 	#번호로 뽑을 수 있다.
+
+
+- button
+ㄴ button태그에 type을 따로 정하지 않으면 type="submit"으	로 지정된다.
+ㄴ 폼데이터를 제출하는 버튼 button type="submit"임.
+ㄴ input type="submit"과 기능적으로는 동일함!
+ㄴ 차이점은 기본적으로 button태그의 type의 기본값이 submit이다
+ㄴ 그래서 따로 type을 지정하지 않는다면 자동으로 submit으로 된다
+
+
+- output
+ㄴ 스크립트 등에 의해 수행된 계산의 결과나 사용자의 액션에 의	한 결과를 나타낼 때 사용한다
+예시) input type="range"의 선택되는 범위를 숫자로 표현하고 싶을 때!
+ㄴ form태그에 oninput속성부여, input태그에 onchange속성부여 -> oninput에 output의 id.value=this의 input태그의 parseint(id.value) -> input 태그에onchange="함수(this)" -> script에 함수 만들기 -> 함수내용: output의 value값 = this.value값(받은 함수인자의 value값)
+
+
+프로그램을 잠깐 시간 또는 텀을 가지다가 다시 시작하고싶을때 setTimeout()을 사용
+프로그램을 계속 '쉼-재가동-쉼-재가동' 하게 하고싶다면setInterval() 사용!
+setInterval()을 하다가 끝에 도달해 완료되게 하고싶다
+ㄴ> setInterval()소멸시켜야함
+ㄴ> clearInterval() 
+* setTimeout()이랑 setInterval()이랑 잘 구분해 주어야 한다!
+
+
+- 변수를 입력값을 줄때는 ""를 같이 적어주면 안된다. 당연함 같이적으면 문자열댐
+
+
+@media all and (min-width: 400px) and (max-width: 800px) {
+    /* 이건 태블릿pc 전용 화면 설정 */
+    article{ width: 800px;}
+
+@media all Q. all의 범위가 어디까지
+and하고 ()안에 최소와 최대 넓이를 지정하여 화면의 크기를 제한해 보는사람이 PC화면인지, 모바일화면인지, 태블릿화면인지를 결정해서 css해준다.
+ㄴ> 왜냐하면 기기마다 화면이 다르기때문에 각자에 알맞게 설정해줌
+ㄴ> 여기서 flex의 개념이 많이 쓰이고 적용하기도 쉽다!
+
+
+vh : 높이의 단위. view height. 사용자가 보는화면에서의 크기

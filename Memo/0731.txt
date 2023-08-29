@@ -1,0 +1,14 @@
+0731
+textarea에 글을 쓸수없게 하게하려면 disabled="disabled" 를 넣어주면 된다. 그냥 disabled만 써도 됨
+resize: none; ->textarea사이즈조정바 사라지게하고 크기 고정시키는것
+pointer-events: none; 커서 비활성화
+버튼만든다고 button태그를 바로 쓰기보단, 준비한 이미지가 있다면(대부분있음)그러면 인라인레벨의 태그로 작성해서 써준다.span이나 a 태그등등
+vertical-align: top; ->해당칸의 맨 위,수직으로 올려준다는 뜻
+또 다른 테이블 형식 td머리>dt몸통>dd그냥열
+JAVASCRIPT
+a태그에 연결해줄때 자바스크립트 함수로 호출해야한다. 파일로 넘겨주고나 그런거 안됨
+script영역에서는 태그를 쓰지않는다
+페이지를 옮길거야->href
+페이지를 이동,위치를바꾸는 명령 : location.href
+document.getElementById("ch01");
+location.href="reg2.html";

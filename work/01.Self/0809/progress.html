@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="init()">
+    <form>
+        <fieldset>
+            <legend>Progress연습</legend>
+
+            <label for="s1">Progress : </label>
+            <progress value="0.05" max="1" id="s1" name="s1">
+                브라우저가 progress를 지원하지 않습니다. <!-- progress를 지원하지 않으면 보이는 문구 -->
+            </progress>
+            <span>5</span>% <!-- 앞서 배운 output으로 해도 좋은 방법이다. -->
+
+            <button type="submit">보내기</button>
+            <!--
+                폼 데이터를 제출하는 버튼 button type="submit"임.
+                input type="submit"과 기능적으로는 동일하지만!
+                기본적으로 button요소는 type의 기본값이 submit이다!
+                즉, 폼에서 이를 대체하기 위한 목적으로는 안성맞춤이다 -> ?
+            -->
+        </fieldset>
+    </form>
+
+    <script>
+        
+        // null은 Javascript의 원시 값 중 하나로, 어떤 값이 의도적으로 비어있음을 표현하며
+        // 불리언 연산에서는 '거짓'으로 취급합니다.
+        // 변수에 null을 할당하면, 이전에 참조하던 값을 더이상 참조하지 않겠다는 의
+        // 이전
+        // inter변수에 null을 담아서 false로 설정.
+        let inter = null;
+
+        function init(){ //body가 읽힐때 호출되는 함수
+            // inter변수에 인터벌(0.5초마다 pGo를 호출) 적용
+            inter = setInterval("pGo()", 500); // inter에 인터벌객체를 담음으로서 true가 됌
+        };
+        function pGo(){
+            //여기서 인터벌객체 내용생성
+            // 현재문서에서 id="s1"인 요소를 검색하여 검색된 s1에 값(value)을
+            // 일정한 값으로 증가시켜야 한다.
+            
+            // id="s1"의 value가 0.5초마다 증가해야하는데
+            let ss = document.getElementById("s1");
+            ss.value = ss.value + 0.05; //0.05는 ss의 value값에 더해주는 것
+
+            //span태그의 값도 5%씩 증가했으면 좋겠
+            let spsp = document.querySelector("form fieldset span");
+            spsp.innerHTML = parseInt(ss.value*100); //span의 출력되는 내용을 바꾸고싶으면 JS에서는 innerText 아니면 innerHTML이라고!@@@
+            console.log("^^")
+
+            //프로그래스바 끝에 도달했을때 인터널객체 소멸
+            if(ss.value >= 1){ // 프로그래스바가 1이 됬다면(바가 꽉찼다면)
+                clearInterval("s1");
+                alert("완료!");
+            }
+
+        };
+    </script>
+</body>
+</html>

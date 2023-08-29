@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="CSS변경" id="btn"/>
+    <br/>
+    <p>p요소1</p>
+    <p>p요소2</p>
+    <p>p요소3</p>
+    <a href="">a요소1</a>
+    <p>p요소4</p>
+    <p>p요소5</p>
+    <p>p요소6</p>
+    <p>p요소7</p>
+    <a href="">a요소2</a>
+    <p>p요소8</p>
+    <p>p요소9</p>
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        // 현재문서가 준비완료되면 수행하는 것이 jQuery
+        $(function() {
+            $("#btn").bind("click", function(){ //id가 btn인 걸 클릭하면 익명함수를 부르겟다
+                // $("p").css("color","#f00");
+
+                // p요소들을 모두 선택해서 가져온다.
+                let pp = $("p"); // 변수 pp에 p요소들을 모두 가져온다. 근데 모두 가져온다 => 배열이다
+                // pp.css("color","#f00"); // pp에 css적용. 색깔, 빨간색 으로
+                console.log(pp.length);
+
+                // p요소 모두를 변경할 것이 아니라 짝수번째의 p요소들의
+                // 글꼴색을 빨강으로 변경하자!
+                for (let i = 0; i < pp.length; i++) {
+                    if((i+1)%2 == 0) {
+                        // pp[i].style.color = "#f00"; // 이건 자바스크립트 영역명령어
+                        $(pp[i]).css("color","#f00");
+                    }
+                }
+                // $("ppidx").css("color","#f00");
+            });
+        });
+
+    </script>
+</body>
+</html>

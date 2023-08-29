@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 2px solid green;
+            width: 600px;
+            display: flex; /*row가 기본값인듯*/
+            flex-wrap: nowrap;
+        }
+        .item{
+            background-color: lightcoral;
+            width: 500px;
+        }
+        .flex1 {
+            background-color: lightblue;
+            flex-shrink: 1;
+        }
+        .flex2 {
+            background-color: lightcyan;
+            flex-shrink: 2;
+        }
+        .flex3 {
+            background-color: lightgoldenrodyellow;
+            flex-shrink: 3;
+        }
+        /* flex-shrink 비율이긴한데 넣어준 숫자분의 1인가봄
+        근데 앞에거의 숫자분의1인듯 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item flex1">항목1</div>
+        <div class="item flex2">항목2</div>
+        <div class="item flex3">항목3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can1{
+            border: 3px dotted black;
+        }
+    </style>
+</head>
+<body>
+    <h1>canvas 연습</h1>
+    <canvas id="can1" width="420" height="300"></canvas>
+
+    <script>
+        window.onload = function(){
+            let vas = document.getElementById("can1");
+            let boo = vas.getContext("2d");
+
+            if(boo) {
+                boo.fillStyle = "yellow";
+                boo.strokeStyle = "red";
+                boo.lineWidth = 10; // 한번만 설정하면 된다.
+                
+                boo.save(); // 지금까지 지정된 ctx의 상태를 저장한다.
+
+                boo.fillRect(25,25,100,125);
+                boo.strokeRect(25,25,100,125);
+
+                boo.fillStyle = "blue";
+                boo.strokeStyle = "green";
+                boo.fillRect(155,25,100,125);
+                boo.strokeRect(155,25,100,125);
+
+                boo.restore();// 앞서 저장된 ctx의 상태를 불러온다.
+
+                // boo.fillStyle = "yellow";
+                // boo.strokeStyle = "red";
+                boo.fillRect(285,25,100,125);
+                boo.strokeRect(285,25,100,125);
+            }
+
+        };
+    </script>
+</body>
+</html>

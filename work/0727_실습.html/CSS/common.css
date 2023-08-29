@@ -1,0 +1,174 @@
+@charset "UTF-8";
+@import "reset.css";
+/**********************************
+기본레이아웃
+**********************************/
+#wrap {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+/******* 상단영역 *******/
+
+#header {
+    width: 970px;
+    height: 140px;
+    margin: auto;
+}
+#header>h1 {
+    background: url(../0727_image/이미지/logo.png) no-repeat;
+    width: 181px;
+    height: 59px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+#header>ul.gnb {
+    width: 100%;
+    height: 50px;
+    word-spacing: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+#header>ul.gnb>li {
+    display: inline-block;
+    width: 194px;
+    height: 100%;
+    text-align: center;
+    background-color: #ff4f00;
+}
+#header>ul.gnb>li>a {
+    display: block;
+    width: 194px;
+    height: 100%;
+    text-align: center;
+}
+#header>ul.gnb>li>a>span.menu {
+    margin-top: 19px;
+    display: inline-block;
+    padding-left: 30px;
+    color: white;
+    height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    background: url(../0727_image/이미지/gnb_bult.png ) no-repeat;
+}
+#header>ul.gnb>li>a>span.m2 {background-position: left -22px;}
+#header>ul.gnb>li>a>span.m3 {background-position: left -44px;}
+#header>ul.gnb>li>a>span.m4 {background-position: left -66px;}
+#header>ul.gnb>li>a>span.m5 {background-position: left -88px;}
+
+
+/* header>.gnb>li>a>span {
+    display: inline-block;
+    border: 1px solid red;
+    color: white;
+    font-size: 15px;
+}
+a>#menu_m02 {background-position: left top;}
+a>#menu_m02 {background-position: left -22px;}
+a>#menu_m03 {background-position: left 44px;}
+a>#menu_m04 {background-position: left -66px;}
+a>#menu_m05 {background-position: left -88px;} */
+
+/**** 컨텐츠 영역 ****/
+#contents {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+#contents>div
+
+/**** 푸터 영역 ****/
+/* 바 가 있는데 보더로 */
+
+#footer {
+    width: auto; /* 내용물의 크기에따라 넓이도 자동지정됨 */
+    background-color: #eee;
+    margin-top: 80px;
+    padding: 40px 0 50px; /* 위 좌우 아래 */
+}
+#footer .foot_guide {
+    width: 900px;
+    margin: auto;
+}
+#footer .foot_menu {
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+#footer .foot_menu>li {
+    display: inline-block;
+    padding: 0 10px;
+    border-left: 1px solid black;
+}
+/* li태그들 중 가장 첫번쨰 li요소 선택법 */
+#footer .foot_menu li:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+#footer .foot_menu li>a {
+    color: #777;
+    font-size: 12px;
+    font-weight: bold;
+}
+#footer .foot_menu li>a:hover {
+    color: #ff4f00;
+}
+#footer address {
+    font-size: 12px;
+    color: #777;
+    padding-bottom: 7px;
+}
+#footer .copyright {
+    font-size: 11px; 
+    color: #9c9c9c;
+}
+
+/*****************
+기타 스타일
+*****************/
+.ellip { /* 문자열을 공간에 맞도록 표현 및 줄임표 */
+    display: inline-block;
+    width: 97%;
+    white-space: nowrap; /* 스페이스바, 탭 줄바꿈 등을 공백 1칸으로 표현 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*****************
+버튼 스타일
+*****************/
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: url(../0727_image/이미지/btn.png) no-repeat;
+    text-indent: -9999px;
+}
+.btn_center {
+    text-align: center;
+}
+.btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.title01{
+    /* margin-bottom: 5px;
+    width: 290px; */
+    height: 30px;
+    background-position: 0 0;
+}
+.title_src { /*p태그들 중 class가 title_src인 요소 */
+    color: #3e3e3e;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: bold;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+.sub_title {
+    background: url(../0727_image/이미지/sub_title.png) no-repeat;
+    text-indent: -9999px;
+    /* border: 1px solid pink; */
+}

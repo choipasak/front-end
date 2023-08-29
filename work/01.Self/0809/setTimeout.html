@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="init()">
+    <form>
+        <fieldset>
+            <legend>Progress연습</legend>
+
+            <label for="s1">Progress : </label>
+            <progress value="0.05" max="1.05" id="s1" name="s1">
+                브라우저가 progress를 지원하지 않습니다. <!-- progress를 지원하지 않으면 보이는 문구 -->
+            </progress>
+            <span>5</span>% <!-- 앞서 배운 output으로 해도 좋은 방법이다. -->
+            
+            <button type="submit">보내기</button>
+        </fieldset>
+    </form>
+
+    <script>
+        //먼저 interval 객체 초기화 변수 선언
+        let inter = null;
+        function init(){
+            //0.5초 간격으로 pGo()라는 함수를 딱! 한번 호출하는 객체 생성
+            inter = setTimeout("pGo()",500);
+        }
+        function pGo() {
+            console.log("^!^");
+            //현재문서에서 아이디가 s1인 요소를 검색하여 검색된 s1값을
+            //일정한 값으로 증가시켜야한다.
+
+            // 1) 아이디가 s1인 요소 검색
+            let a = document.getElementById("s1");
+
+            // 2) 현재문서안에 폼안에 필드셋안에 스팬태그검색(태그를 검색하는것은 queryselector)
+            let sp = document.querySelector("form fieldset span");
+
+            // 3) s1의 값을 조금 증가시키자
+            a.value = a.value + 0.05;
+
+            // 2번에서 검색된 span태그의 문자열을 a의 값으로 변경하자!
+            sp.innerHTML = parseInt(Math.round(a.value*100));
+
+            //프로그레스 바의 값이 1이면 진행완료이므로
+            //움직이고있던 인터벌객체를 소멸시켜준다
+
+            //a의 값이 1이상이면 멈추게 해서 없애자
+            if(a.value > 1){
+                clearInterval(inter);
+                alert("완료!")
+            }
+
+        }
+    </script>
+</body>
+</html>

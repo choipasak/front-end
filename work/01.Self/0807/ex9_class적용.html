@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 2px double #7c98a2;
+            width: 200px;
+            height: 200px;
+            background-color: lemonchiffon;
+            color: #7c98a2;
+            margin-top: 3px;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="감추기" id="btn"/>
+    <div id="box" class="show">
+        <p>화이팅~!</p>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            let flag = true;
+            $("#btn").click(function(){
+                if (flag){
+                    $("#box").removeClass("show"); //class="show"가 들어가 있으니까 지워주고 hidden넣어준다.
+                    $("#box").addClass("hide");
+                    $(this).val("보이기");
+                }else {
+                    $("#box").removeClass("hide");
+                    $("#box").addClass("show");
+                    $(this).val("감추기");
+                }
+                flag = !flag; //토글형식의 버튼에 꼭 들어가야하는 행.
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" oninput="s2.value=parseInt(s1.value)">
+        <fieldset>
+            <legend>Range연습</legend>
+            <label for="s1">Range : </label>
+            <input type="range" name="s1" id="s1" min="0" max="100" value="50" step="5" onchange="setVal(this)"/>
+            <output id="s2" name="result">50</output>
+            <!-- type="range"를 하면 항상 min, max값을 정해줘야 한다. value는 처음 나타나는 range값 step은 움직이는 단위 -->
+            <button type="submit">보내기</button>
+        </fieldset>
+    </form>
+
+    <script>
+        function setVal(ran){
+            $("#s2").val(ran.value);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        #myVideo{
+            border: 4px solid ;
+            border-radius: 7px;
+            width: 610px;
+            height: 456px;
+        }
+        #video_control{
+            width: 620px;
+            height: 30px;
+            background-color: #333;
+            color: #fff;
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-transform: uppercase; /* 대문자로 변환 */
+            display: flex;
+        }
+        .player_button {
+            width: 50px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer; /* 위에 커서 올리면 손가락 모양으로 변함 */
+        }
+        #video_control>div{
+            height: 30px;
+            line-height: 30px;
+        }
+        #progress{
+            position: relative;
+            width: 475px;
+            background-color: #555;
+            margin-right: 4px;
+        }
+        #play_progress{
+            position: absolute;
+            background-color: #6c3;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            비디오 도구제작
+        </h1>
+    </header>
+    <div id="contents">
+        <video id="myVideo" poster="asset/images/Step1.png"><!-- 이때까지만해도 영상이 총 몇초짜린지 인지하지 못함 -->
+            <source src="asset/media/Falls.mp4"/><!-- 이 source에서 인지함 -->
+        </video>
+        <div id="video_control">
+            <div id="play_toggle" class="player_button">play</div>
+            <div id="progress">
+                <div id="play_progress"></div>
+            </div>
+            <div id="time">
+                <span id="current_time">00:00</span>
+                /
+                <span id="duration">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            //먼저 이 브라우저에 비디오가 지원하는지 확인(if)
+            if(!document.createElement("video").canPlayType){
+                $("#video_control").hide();
+                return; // 그냥 동영상재생 없애고 아무것도 안하겠다. 그냥 끝!
+            }
+            
+            // 사용자가 나중에 play버튼을 클릭하면 실행시키게! 미리 선언해준다.
+            let video = document.getElementById("myVideo");
+    
+            // play 버튼을 눌렀을 때 pause
+            // pause 버튼이 되면 play
+            $("#play_toggle").click(function(){
+                if(video.paused){ //비디오가 정지된 상태일 때
+                    video.play(); //video 재생 시켜라!
+                    $(this).text("pause"); //영상이 재생되는 동안엔 문구는 puase
+                }else{
+                    video.pause();
+                    $(this).text("play");
+                    //동영상이 재생되는 상태일땐 영상을 멈추게하고 문구를 play로 바꾼다
+                }
+            });
+
+            //비디오가 끝까지 실행됬을 때
+            $(video).bind("ended",function(){
+                $("#play_toggle").text("play");// text play로 바뀌게하고~
+            });
+
+            // 비디오태그 안에 source에 연결된 파일이 load가 완료될 때!
+            // 비디오태그가 기억하고 있는 종료 시간이 수정된다(durationChange).
+            // 이것 또한 이벤트로 접근 가능.
+            $(video).bind("durationchange",function(){
+                //durationchange : 영상파일이 다 로드되면 파일의 정보로 기존의 백지?였던 정보들을 바꿔놓는다는 이벤트
+                // alert(this.duration);
+
+                //영상의 총길이를 정수로 00:00 형태로 나타낸 정보 입력
+                $("#duration").text(fomatTime(this.duration));
+                
+            });
+            //비디오가 실행될때 진행되는 영상시간
+            //timeupdate : 오디오/비디오의 재생위치가 변경될 때 이벤트발생
+            $(video).bind("timeupdate",function(){
+                let c_time = fomatTime(this.currentTime);
+                $("#current_time").text(c_time);
+
+                //css의 width값으로 줘서 초록바가 영상진행도와 똑같이 진행되게
+                //width값은 100이하 정수니까 백분율 만들기
+                let prog = (this.currentTime/this.duration)*100;
+                //만든 백분율을 css의 width값으로 넣어주기!
+                $("#play_progress").css("width",prog+"%");
+            });
+        });
+        
+        function fomatTime(time){
+            // 받은 인자인 time을 반올림해서 소수자리를 없앤다
+            let second = Math.round(time);
+            //소수자리를 없앤 second를 60으로 나눈게 minute!
+            let minute = Math.floor(second/60);
+
+            // 아직 second가 60을 넘는 숫자니까 /60값으로 대입
+            second = second%60;
+
+            //만든 숫자를 문자열 00:00 형식 문자열로 변환
+            // 간단한 조건식이니까 삼항연산자 사용!
+            minute = (minute<10)? "0"+minute:minute;
+            second = (second<10)? "0"+second:second;
+
+            //그리고 최종적으로 반환할 형태로 리턴값을 적어준다
+            return minute +":"+ second;
+
+        }
+    </script>
+</body>
+</html>

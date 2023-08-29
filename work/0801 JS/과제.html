@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+            margin: 10px;
+            border: 1px solid rgb(94, 110, 190);
+            font-size: 80px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 300px;
+            color: rgb(207, 156, 165);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        95 이상이면 a+
+        90 이상 a-
+        85 이상 b+
+        80 이상 b-
+        75 이상 c+
+        70 이상 c-
+        60 이상 d
+        60 미만 F 
+    -->
+    <form action="" method="post">
+        <label for="s_score">점수를 입력하세요.</label>
+        <input type="number" id="s_score" name="u_score">
+        <button type="button" onclick="score()">확인</button>
+    </form><br/>
+    <div id="box">
+
+    </div>
+    <script>
+        
+        let box = document.getElementById("box"); // 이거는 그냥 표현 형식이여서 함수 밖으로 빼도된다!
+
+        
+        function score() {
+            
+            let v = document.getElementById("s_score").value;
+            let score = parseInt(v);
+            
+            if(score >= 95) {
+                box.innerText = "A+";
+            }else if(score >= 90 && score < 95){
+                box.innerText = "A-";
+            }else if(score >= 85 && score < 90){
+                box.innerText = "B+";
+            }else if(score >= 80 && score < 85){
+                box.innerText = "B-";
+            }else if(score >= 75 && score < 80){
+                box.innerText = "C+";
+            }else if(score >= 70 && score < 75){
+                box.innerText = "C-";
+            }else if(score >= 60 && score < 70){
+                box.innerText = "D+";
+            }else {
+                box.innerText = "F!";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1 {
+            border: 2px solid green;
+            width: 320px;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        #t1> td,#t1 th { 
+            border: 1px solid green;
+            padding: 2px;
+        }
+        #t1 caption {
+            text-indent: -9999px; 
+            height: 0;
+            /* 캡션을 안보이게한다음 없애버렸음 */
+        }
+    </style>
+</head>
+<body>
+    <h2>행추가</h2>
+
+    <form action="" method="post">
+        
+        <label for="sname">이름</label>
+        <input type="text" name="uname" id="sname"/>
+        <br/>
+        <label for="sphone">연락처</label>
+        <input type="text" name="uphone" id="sphone"/>
+        <br/>
+        <input type="button" value="추가" onclick="gg()"/>
+    </form>
+    
+    <table id="t1">
+        <caption>dddd</caption>
+        <thead>
+            <tr>
+                <td colspan="4">
+                    <input type="button" value="?버튼" onclick="gg()" />
+                </td>
+            </tr>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>연락처</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script>
+
+        let num = 0;
+        let nm = document.getElementById("sname");
+        let ph = document.getElementById("sphone");
+        let tablee = document.getElementById("t1"); //담아뒀던 tr을 담아줄 table을 불럿음
+        
+
+        function gg() {
+
+
+            //먼저 열 4개랑 행1개 만들기
+            let ttd1 = document.createElement("td"); //번호 칸 열. 올라가는 숫자를 만듬
+            ttd1.innerText = ++num; //함수 밖에서 지정해준 변수numm에 버튼 누를때마다 1씩 더해진다
+
+            let ttd2 = document.createElement("td");//여기는 이름칸에 추가될 열
+            ttd2.innerText = nm.value; //이름입력칸에서 받은 값으로 이름칸에 추가할거임
+            
+            let ttd3 = document.createElement("td");//여기는 연락처칸으로 추가될 열
+            ttd3.innerText = ph.value; //id가 sphone인 input값을 받아서 출력
+            
+            let ttd4 = document.createElement("td");//이거는 버튼만들어서 넣을 열
+            //버튼을 만들어서 a4에다가 넣을거임(appendChild 객체)
+
+            let bbt = document.createElement("input");//삭제버튼만들게, <input/> 를만듬
+            bbt.type = "button" //<input type="button"/>
+            bbt.value = "삭제"// <input type="button" value="삭제"/>
+            //그리고 버튼 한번누르기->전체삭제 가 되지않게 삭제버튼 id도 다르게 해주기
+            bbt.id = "btn"+num;
+           
+            ttd4.appendChild(bbt); //이걸 a4에 담아주기
+
+            
+            
+            let ttr = document.createElement("tr");//위의 모든것들을 담을 행 1줄
+            
+            ttr.appendChild(ttd1);
+            ttr.appendChild(ttd2);
+            ttr.appendChild(ttd3);
+            ttr.appendChild(ttd4);//tr에 td만든것들 다 담아줌
+            
+            ttr.style.textAlign = "center";
+            
+            bbt.onclick = function() {
+                tablee.deleteRow(tablee.rowIdx);
+            }
+            
+            bbt.onmouseover = function(){
+                tablee.rowIdx = this.rowIndex;
+            }
+
+
+            let ttbody = tablee.children[2]; //table 안에 있는 tbody에 행을 추가해줘야하니까 위치잡아줌
+            ttbody.appendChild(ttr);
+        }
+    </script>
+</body>
+</html>

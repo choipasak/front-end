@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 170px;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid;
+            position: absolute;
+            top: 120px;
+            left: 300px;
+            display: none; /* 안보이게 함! */
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="창!" id="btn"/>
+    <br/>
+    <img src="asset/images/Step1.png" id="img1" alt="아무이미지"/>
+    <div id="box">
+        <header>
+            <h2>제목입니다.</h2>
+        </header>
+        <div class="content">
+            <input type="button" value="닫기" id="close_btn"/>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            //id="img1"인 요소를 드레그 허용
+            $("#img1").draggable({axis : "x"});//json표기방법. 속성을 대부분 많이 넣어줘서 axis: 하고 ,하면서 속성을 다 넣어줌
+            $("#box").draggable();
+
+            $("#btn").click(function(){
+                // $("#box").css("display", "block");
+                //css 라는것은 style을 입히는 함수
+                // $("#box").css("backgroundColor", "#fff"); 두개 같이 axis로 넣어볼게
+                $("#box").css({backgroundColor:"#00bff", display:"block"});
+
+            });
+            $("#close_btn").click(function(){
+                $("#box").css("display", "none");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>jQuery함수 활용</h1>
+    <div id="box1">
+        <button type="button" id="btn1">한글</button>
+        <button type="button" id="btn2">영문</button>
+        <header>
+            <h1>제목1</h1>
+            <section>
+                <input type="radio" value="public" name="rdo"/><span>공개</span>
+                <input type="radio" value="private" name="rdo"/><span>비공개</span> <!-- 이름 같은 이유: radio 둘중 하나 선택가능 하게 만들라고 -->
+            </section>
+        </header>
+    </div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            let ar = $("#box1").find(":radio");//ar배열에 속성radio인애들을 담아
+            $(ar[ar.length-1]).prop("checked",false);
+            $("#btn1, #btn2").click(function(){
+                let txt = $(this).text();
+            if(txt == "영문"){
+                //영문버튼을 클릭한 경우
+                for(let i = 0; i<ar.length; i++){
+                    switch(i){
+                        case 0:
+                            $(ar[i]).next().text("Public");
+                            break;
+                        case 1:
+                            $(ar[i]).next().text("Private");
+                            break;
+                    }
+                }
+            }else{
+                //한글버튼을 클릭한 경우
+                for(let i = 0; i<ar.length; i++){
+                    switch(i){
+                        case 0:
+                            $(ar[i]).next().text("공개");
+                            break;
+                            case 1:
+                            $(ar[i]).next().text("비공개");
+                            break;
+
+                        }
+                    }
+                }
+            });
+        });
+        
+    </script>
+</body>
+</html>

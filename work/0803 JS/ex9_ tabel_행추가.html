@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1 {
+            width: 300px;
+            border-collapse: collapse;
+        }
+        #t1 th, #t1 td {
+            border: 1px solid green;
+            padding: 4px;
+        }
+        #t1 caption {
+            text-indent: -9999px; 
+            height: 0;
+            /* 캡션을 안보이게한다음 없애버렸음 */
+        }
+        #t1>thead>tr:first-child>td { /* thead안에 첫번째 tr안에 td를 선택한거임 */
+            text-align: right;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>테이블 햄추가</h2>
+
+    <table id="t1">
+        <caption>행추가 테이블</caption>
+        <thead>
+            <tr>
+                <td colspan="3">
+                    <input type="button" value="추가" name="" id="" onclick="addRow()">
+                </td>
+            </tr>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>연락처</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script>
+        function addRow() {
+            // 추가버튼을 클릭할때마다 호출하는 곳!
+
+            //tr을 만든다.
+            let str = "<tr><td></td><td></td><td></td></tr>";
+
+            //위에서 만든 str을 tbody를 찾아서 innerHTML하면 될거같은데?!
+            let table = document.getElementById("t1");
+            let tbody =table.children[2] // talble의 3번째 자식요소(tbody)
+                                         //children도 배열임! 왜냐면 children이 아이들이잔아
+            tbody.innerHTML = str; //tbody에 원래있던 내용을 지우고 다시 써주는 innerHTML이란 아이다!
+            // 그래서 아무리 눌러도 1줄만 추가된다!
+        }
+    </script>
+</body>
+</html>

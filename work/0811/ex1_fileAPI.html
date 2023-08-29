@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>File API연습</h1>
+    </header>
+    <article>
+        <p>
+            <h2>File API</h2>
+            <section>
+                HTML5에서 제공하는 기능 중 로컬에 저장된 파일을 읽을 때
+                사용하는 API이다.
+            </section>
+        </p>
+        <form action="">
+            <!-- 
+                1. 파일을 읽어오려할 때 많이 사용함 input의 file
+                2. 파일을 한번에 여러개 불러올 수도 있다. (multiple) -> 안하면 여러가 선택 안됨
+                3. type="file"을 선택하면 배열로 받게 되있다.
+            -->
+            <input type="file" name="" id="s_file" multiple/>
+
+            <select id="enc">
+                <!-- 이건 그냥 옵션임 실제 기능X-->
+                <option>UTF-8</option>
+                <option>8859_1</option>
+                <!--
+                    option태그에 value를 적어주지 않으면 맨 위의 option태그가 value값이된다.
+                    시스템의 속도를 생각하면 속성으로 value값을 주는게 좋음
+                -->
+            </select>
+
+            <button type="button" onclick="readFile()">읽기</button>
+            <div>
+                <span id="fileName">File Name</span>
+                <span id="fileSize">File Size</span>
+                <!-- 여기서 name속성을 안쓴이유는 name을 보낼 서버가 없기 때문이다. -->
+            </div>
+            <textarea name="" id="content" style="width: 600px; height: 400px;" readonly></textarea>
+            <!--
+                readonly와 disabled는 어떤 차이가 있는걸까
+                readonly : 읽기만 가능(읽기 전용) -> 서버로 보내짐.
+                disabled : 비활성화, 사용하지 못한다.라는 의미여서 서버에서 안가져감. 파라미터로 보낼 수가 없음(회원정보수정에서 id가 disabled다.)
+                둘이 모양, 형태 기능은 비슷함. 둘다 수정불가능임  
+            -->
+        </form>
+    </article>
+
+    <script>
+        //함수가 호출되는 순서가
+        // 
+
+        function readFile(){
+            // 사용자가 선택한 파일 가져오기
+            // type="file"형태는 보안상 value로 값을 지정할 수 없다.
+            // 파일을 여러개 선택할 수 있는 옵션이 있음으로,
+            // 가져올 때 실질적으로 배열로 받는다(!!!!!!!!!!!!잊지말기!!!!!!!!!!!!)
+            // document.getElementById("s_file").value = "ttt.java"; <- 안들어감. 이유 : 보안상 안들어감! 왜냐? file을 지정하는 것이여서 악성코드같은것을 강제로 심을까봐 막아놈
+            // 위와 같이 value값을 지정할 수 없다.(보안문제로 인한 조치)
+            
+            let file = document.getElementById("s_file").files[0]; // files라는 예약어사용. -> 이건 배열임. 
+            // 위는 file태그를 가져온 것이 아니라 실제 사용자가 지정한
+            // 파일객체를 가져온 것이다.
+            // 배열을 붙여야 파일객체 자체에 접근한 것이다.
+
+            document.getElementById("fileName").textContent = file.name; // 위에서 받은 파일 이름을 id="fileName"에 대입 | innerText와 textContent는 똑같다.
+            document.getElementById("fileSize").innerText = "("+file.size+")"; // 위에서 받은 파일 사이즈를 id="fileSize"에 대입
+
+            // 파일 내용을 읽기하기 위해 Reader객체 생성
+            // Reader는 '문자' 기반의 파일들만 '읽기' 하는 객체다!
+            let reader = new FileReader(); //내장 스트림객체(깨지기 쉽다! -> 예외처리해줌) , FileReader가 문자전용 빨대!
+
+            // FileReader() 를 자바랑 엮어서 설명
+            /*
+                자바에서는 저걸 스트림이라고함
+                바이트기반 : 한 바이트씩 읽어요/ 좋은점 : 문자 데이터들을 읽고쓰기위한 스트림이 아님. -> 이미지,음원,등등,, 을 읽음
+                output스트림 둥둥 종류가 많음
+                자바에서는 있는 데이터로 무조건 다 문자열인데 다라고할순없긴한데,,
+                reader 보단 byte개념 스트림을 더 많이씀 자바안의 데이터들이 100%문자이진 않아서 데이터의 유실이 더 적음
+                reader는 2byte기반이여서 문자는 꼭 reader를 사용해야함
+            */
+
+            // reader로부터 자원들이 읽기가 끝나면 이벤트를 감지하는
+            // 이벤트 감지자 등록! -> onload같은거
+            reader.onload = function(){
+                // reader가 끝나면 onload할거야! 익명함수를
+                
+                // 파일 자원들을 읽었으면 현재 문서에서
+                // id="content"인 객체를 가져온다. 이유는
+                // 그곳에 내용을 출력해야 하니까@!
+                let ta = document.getElementById("content");
+                ta.innerText = reader.result; 
+                // ㄴ> reader의 결과를 textarea에 표현한다. 
+                // 저 result라는 변수가 원래 있음. reader안에 포함되어있는 변수임.
+                //reader가 file로부터 데이터를 다 읽어서 result라는 변수에 담음 원래 있는변수임.
+            };
+
+            // reader에서 오류가 발생했을 때를 감지하는 이벤트를 넣는것도 좋을거 같다!
+            reader.onerror = function(ev){
+                alert(ev.target.error.code); 
+                // 정상적으로 처리되면 200번을줌.
+                // 파일의 경로가 잘못됬거나 가 400번대
+                // 500번대는 서버쪽에서 난 오류
+                // 저 alert가 위 같은 코드를 찍어달라는 말
+            }
+
+            // 선택된 파일을 읽기 하기 전에 인코딩을 지정한다.(UTF-8이냐 8859_1이냐 같은거를 정해준다는소리)
+            // 8bit = 1byte ,16bit = 2byte/ 유니코드>아스키코드 / 비영어권을위한 유니코드(2byte사용)
+            let enc = document.getElementById("enc");
+
+            // enc에 선택된 index값을 가지고 여러 개의 option들을 배열로 관리하여 -> .options[]
+            // 접급하는 값으로 사용한다.
+            // 접근된 option요소의 문자열 값(value)을 읽어내자!
+            let encoding = enc.value;//enc.options[enc.selectedIndex].value;
+            // select태그의 옵션들을 배열로 가져올 수 있어서 enc(select태그 id)가 선택한 인덱스값을 encoding에 담는다.
+            
+            // 파일의 문자열 자원들을 읽기
+            reader.readAsText(file, encoding); //얻어낸 파일들중(.files[]) 파일을 받아서 읽고 변수encoding내용을 하겠다. 
+            // .readAsText : 파일을 읽어주세녀
+            // ㄴ> 파일을 지정하여 읽기시작!
+        };
+    </script>
+</body>
+</html>

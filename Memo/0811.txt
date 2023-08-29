@@ -1,0 +1,34 @@
+0811
+
+~오늘한거~
+input type="file"
+
+~input type="file"에 대하여~
+- file을 가져오거나 읽어오려할 때 input type="file"을 많이 사용한다.
+- file을 여러개 가져오고 싶으면 input 속성으로 multiple을 사용한다.
+! 중요 !
+ㄴ> file은 document.getElementById("id값").value로 접근할 수 없다
+ㄴ> 이유 : 보안상의 문제로 막힘.(value =  "악성코드"; 심기 같은 경로가능)
+ㄴ> 이건 그냥 file 태그. 요소를 가져온게 된다!
+
+- 파일객체를 가져오고싶다!
+ㄴ> let 변수명 = document.getElementById("id값").files[0];
+ㄴ> files라는 예약어사용.
+ㄴ> files는 배열이다 배열배열배열@@@@@@@@@@@@@@@중요@@@@@@@@@@@@@
+ㄴ> 배열을 붙여야 파일객체에 접근하여 파일을 가져온 것이 된다!
+ㄴ> .textContent = 변수명.name; -> innerText=textContent
+	ㄴ 화면출력결과 -> 00000.txt
+ㄴ> .innerText = 변수명.size; -> files로 받은 파일. 의 사이즈를
+	id="fileSize"에 대입 => 화면출력결과 : (숫자로)0000
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+파일을 불러올때 필요한 것들(reader로 부터 자원들이 읽기가 끝나면)
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+1. onload(이벤트 감지자 등록 | 익명함수호출)
+ㄴ> reader가 끝나면 익명함수에 onload한다
+2. onerror(reader에서 오류가 발생했을 때를 감지! | 익명함수호출)
+3. encoding라는 변수 선언. -> 하는 일 : 파일을 읽을 코드를 정하는 value에 접근
+4. .readAsText(reader로 불러온 파일을 읽어준다| 인자1,인자2)
+
+
+

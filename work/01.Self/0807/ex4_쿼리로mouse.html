@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1 {
+            border-collapse: collapse;
+            width: 300px;
+        }
+        #t1 td{
+            border: 1px solid;
+
+        }
+    </style>
+</head>
+<body>
+    <table id="t1">
+        <colgroup>
+            <col width="200px"/>
+            <col width="*"/>
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>항목1</td>
+                <td>비고</td>
+            </tr>
+            <tr>
+                <td>항목1</td>
+                <td>비고</td>
+            </tr>
+            <tr>
+                <td>항목1</td>
+                <td>비고</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $("#t1>tbody>tr").bind("mouseover",function(){
+                $(this).css("backgroundColor","lightblue");
+                //mouseover을 하고싶었으면 당연히 this도 세트지 왜그럼
+            });
+            $("#t1>tbody>tr").bind("mouseout",function(){
+                $(this).css("backgroundColor","#fff");
+            });
+        });
+    </script>
+</body>
+</html>

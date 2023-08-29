@@ -1,0 +1,103 @@
+@charset "UTF-8";
+#contents {
+    width: 970px;
+    height: auto;
+    margin: auto;
+}
+#contents .tit02 {
+    /* border: 1px solid; */
+    background: url(../0727_image/이미지/sub_title.png) no-repeat;
+    background-position: 0 -50px;
+    text-indent: -9999px;
+    width: 272px;
+    height: 30px;
+}
+#contents .login_area {
+    border: 1px solid;
+    background: url(../0727_image/이미지/login_bg.png) no-repeat;
+    width: 750px;
+    height: 205px;
+    margin: 80px auto;
+    padding: 20px 70px;
+}
+#contents .person_login {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    border: 1px solid green;
+    position: relative;
+}
+#contents .person_login .sub_title:nth-child(1) {
+    border: 1px solid red;
+    height: 71px;
+    width: 1;
+    background: url(../0727_image/이미지/sub_title.png) no-repeat;
+    background-position: 0 -80px;
+    text-indent: -9999px;
+}
+
+/* #contents .person_login .login {
+    /* width: 100%;
+    height: 132px;
+} */
+#contents .person_login .login .input_area {
+    border: 1px solid pink;
+    padding-top: 10px;
+    
+}
+#contents .person_login .login .input_area p label{
+    display: inline-block;
+    margin: 10px ;
+    width: 55px;
+    background: url(../0727_image/이미지/bult.png) no-repeat;
+    padding-left: 13px;
+}
+#contents .person_login .login .input_area p input {
+    width: 110px;
+    height: 20px;
+}
+#contents .person_login .login .btnArea_right>.b_login {
+    border: 1px solid yellow;
+    display: block;
+    background: url(../0727_image/이미지/btn.png) no-repeat;
+    width: 86px;
+    height: 56px;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    text-indent: -9999px;
+}
+#contents .person_login .login p.login_search {
+    height: 30px;
+    position: relative;
+}
+#contents .person_login .login p.login_search> span {
+    display: block;
+    width: 155px;
+    height: 30px;
+    /* border: 1px solid blue; */
+}
+#contents .person_login .login .btnArea_right {
+    display: inline-block;
+    width: 86px;
+    height: 56px;
+    position: absolute;
+    right: 0;
+    top: 15px;
+}
+/* #contents .person_login .login p.login_search> .b_login {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    text-indent: -9999px;
+    background: url(../0727_image/이미지/btn.png) no-repeat;
+    background-position: -100px 0px;
+} */
+/* ----------------------------------------------------- */
+#contents .group_login {
+    display: inline-block;
+    border: 1px solid;
+    width: 47%;
+    height: 205px;
+    margin-top: -10px;
+}

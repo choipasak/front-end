@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form {
+            width: 270px;
+            text-align: center;
+        }
+        #box {
+            border: 2px solid orange;
+            width: 265px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 15px;
+            text-align: center;
+            margin-top: 3px;
+            /* border-radius: 10px; */
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" class="form">
+        <label for="age">나이 : </label>
+        <input type="number" name="u_age" id="age">
+        <button type="button" onclick="age_div()">확인</button>
+    </form>
+
+    <div id="box"></div>
+
+    <script>
+        
+        
+        function age_div() {
+            
+            let a = document.getElementById("age");
+            let age_val = a.value;
+            
+            let box = document.getElementById("box");
+
+            if (age_val.length < 3){
+
+                let p_age = parseInt(age_val);
+                
+                if(p_age > 90) {
+                    box.innerText = "연령층은 90대입니다.";
+                }else if(p_age > 80) {
+                    box.innerText = "연령층은 80대입니다.";
+                }else if(p_age > 70) {
+                    box.innerText = "연령층은 70대입니다.";
+                }else if(p_age > 60) {
+                    box.innerText = "연령층은 60대입니다.";
+                }else if(p_age > 50) {
+                    box.innerText = "연령층은 50대입니다.";
+                }else if(p_age > 40) {
+                    box.innerText = "연령층은 40대입니다.";
+                }else if(p_age > 30) {
+                    box.innerText = "연령층은 30대입니다.";
+                }else if(p_age > 20) {
+                    box.innerText = "연령층은 20대입니다.";
+                }else if(p_age > 10) {
+                    box.innerText = "연령층은 10대입니다.";
+                }else {
+                    box.innerText = "어린이 입니다.";
+                }
+
+            } else{
+                alert("나이를 입력해주세요.");
+                a.value = "";
+                a.focus();
+            }
+
+        }
+    </script>
+</body>
+</html>

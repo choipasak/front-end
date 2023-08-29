@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can1{
+            border: 5px double black;
+        }
+    </style>
+</head>
+<body>
+    <h1>canvas 연습</h1>
+    <canvas id="can1" width="600" height="300"></canvas>
+
+    <script>
+        window.onload = function(){
+            let vas = document.getElementById("can1");
+            let ctx = vas.getContext("2d");
+
+            if(ctx) {
+                ctx.strokeStyle = "#00f";
+                ctx.fillStyle = "#f00";
+                ctx.lineWidth = 5;
+
+                ctx.beginPath();
+                let a = 270;
+                let alpha = (Math.PI/180)*a;
+                ctx.arc(200,150,100,0,alpha);
+                // ctx.fill();
+                ctx.stroke();
+
+            }
+
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+@charset "UTF-8";
+@import "reset.css";
+/**********************************
+기본레이아웃
+**********************************/
+#wrap {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+/******* 상단영역 *******/
+#header {
+    width: 970px;
+    height: 140px;
+    margin: auto;
+}
+#header>h1 {
+    width: 181px;
+    height: 59px;
+    background: url(../img/logo.png) no-repeat;
+    text-indent: -9999px;
+}
+#header>ul.gnb { /* ul태그에 클래스가 gnb인 요소 */
+    width: 100%;
+    height: 50px;
+    font-size: 0;
+    word-spacing: 0;
+    overflow: hidden;
+}
+header>.gnb>li {
+    display: inline-block;
+    width: 194px;
+    height: 100%; /*50px이라함*/
+    background-color: #ff5001;
+    text-align: center;
+}
+header>.gnb>li a {
+    display: block;
+    width: 194px; /*이거질문 백퍼됨?*/
+    height: 100%;
+    background-size: 24px;
+    text-align: center;
+}
+header>.gnb>li a>span.menu {
+    display: inline-block;
+    height: 20px;
+    margin-top: 15px;
+    line-height: 20px; /* 칸 안에 자연스럽게 사방 가운데 정렬 */
+    color: white;
+    font-weight: bold;
+    background: url(../img/gnb_bult.png) no-repeat;
+    font-size: 16px;
+    padding-left: 30px;
+    /* text-indent: 30px; */
+}
+#header>ul.gnb>li>a>span.m2 {background-position: left -22px;}
+#header>ul.gnb>li>a>span.m3 {background-position: left -44px;}
+#header>ul.gnb>li>a>span.m4 {background-position: left -66px;}
+#header>ul.gnb>li>a>span.m5 {background-position: left -88px;}
+
+#header>ul.gnb>li:hover {background-color: #e24c09;}
+/* header>.gnb>li>a>span {
+    display: inline-block;
+    border: 1px solid red;
+    color: white;
+    font-size: 15px;
+}
+a>#menu_m02 {background-position: left top;}
+a>#menu_m02 {background-position: left -22px;}
+a>#menu_m03 {background-position: left 44px;}
+a>#menu_m04 {background-position: left -66px;}
+a>#menu_m05 {background-position: left -88px;} */
+
+/**** 푸터 영역 ****/
+/* 바 가 있는데 보더로 */
+#footer {
+    width: auto; /* 내용물의 크기에따라 넓이도 자동지정됨 */
+    background-color: #eee;
+    margin-top: 80px;
+    padding: 40px 0 50px; /* 위 좌우 아래 */
+}
+#footer .foot_guide {
+    width: 900px;
+    margin: auto;
+}
+#footer .foot_menu {
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+#footer .foot_menu>li {
+    display: inline-block;
+    padding: 0 10px;
+    border-left: 1px solid black;
+}
+/* li태그들 중 가장 첫번쨰 li요소 선택법 */
+#footer .foot_menu li:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+#footer .foot_menu li>a {
+    color: #777;
+    font-size: 12px;
+    font-weight: bold;
+}
+#footer .foot_menu li>a:hover {
+    color: #ff4f00;
+}
+#footer address {
+    font-size: 12px;
+    color: #777;
+    padding-bottom: 7px;
+}
+#footer .copyright {
+    font-size: 11px; 
+    color: #9c9c9c;
+}

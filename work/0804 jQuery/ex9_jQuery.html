@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="test">여기는 H1</h1>
+    <p>p요소1</p>
+    <p>p요소2</p>
+    <p>p요소3</p>
+    <span>이것은 span</span>
+    <p class="test">p요소4</p>
+    <p>p요소5</p>
+    <div>여긴DIV</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+
+        $(function(){
+            
+            let str = ""; // 문자열을 저장할 변수선언!
+
+            /*
+            //여러가지 요소를 선택할거임. test라는 클래스를 가진 요소(h1,p) 그리고
+            //span요소, div요소 들을 하나의 배열로 수집한다.
+            let ar = $(".test, span, div"); //반복문을 돌리기 위해서 ar에 담은거임
+
+            for(let i = 0; i < ar.length; i++) {
+                // str += ar[i].innerText+", "; // 이건 자바스크립트문법
+
+                str += ar.eq[i].text() + ", "; //이게 str변수에 ar을 배열화? 시켜서 안의 내용을 가져와서 한 문자열마다 ,를 붙여 누적시키겠다는 의미
+                //eq() : 선택한 요소의 인덱스 번호에 해당하는 요소를 찾는다. 없으면 null을 반환한다.
+
+            }//for문의 끝
+            */
+            // 또는
+            $(".test, span, div").each(function(){ //$괄호안의 요소들을 하나씩 만날때마다 each의 함수를 적용하세요. 여기서 each가 for문 역할을 해준거임 !더 간결해짐!
+                // 위의 선택자에 해당되는 요소를 만날 때마다
+                // 현재 영억을 수행한다.
+                // str += this.innerText +", "; 이건 자바스크립트
+                str += $(this).text() +", "; //이게 제이쿼리문법, this자체는 자바스크립트문법이지만 제이쿼리문법을 쓰기위해서 this에 $()를 씌워줬다.
+
+            }); 
+
+
+            alert(str);
+        });
+
+    </script>
+</body>
+</html>

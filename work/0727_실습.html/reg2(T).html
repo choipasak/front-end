@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./CSS/common.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/reg.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/reg2.css">
+</head>
+<body>
+    <div id="wrap">
+        <!-- 상단영역 -->
+        <header id="header">
+            <h1>SK Together</h1>
+            <ul class="gnb">
+                <li class="a1"><a href=""><span class="menu m1">기브유</span></a></li>
+                <li class="a1"><a href=""><span class="menu m2">위드유</span></a></li>
+                <li class="a1"><a href=""><span class="menu m3">스마트 전통시장</span></a></li>
+                <li class="a1"><a href=""><span class="menu m4">BRAVO!Restart</span></a></li>
+                <li class="a1"><a href=""><span class="menu m5">SKT와 사회공헌</span></a></li>
+            </ul>
+        </header>
+        <!-- 상단영역 끝 -->
+        
+        
+        <!--  콘텐츠영역  -->
+        <div id="contents">
+            <h1 class="sub_title title01">일반 개인회원가입</h1>
+            <p class="title_src">
+                사회공헌 포탈 서비스인 T-together는 누구나 참여할 수 있으며 가입하시면 GiveU(기부)나
+                지원봉사 참여 등 다양한 서비스 이용이 가능합니다. <br/>
+                이용 프로그램에 따라 필요한 추가정보를 요청할 수 있습니다.
+            </p>
+            <p class="guide_txt">
+                기본회원정보를 입력해주세요.
+                <span class="txt_r">
+                    <span class="req"></span>
+                    표시 필수입력사항
+                </span>
+            </p>
+            <br/>
+            <form action="" method="post">
+                <table class="table_type">
+                    <colgroup>
+                        <col width="130px"/>
+                        <col width="*"/>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <!-- <th>이름</th>
+                            <td>마루치</td> -->
+                            <th>
+                                <span class="req"></span>
+                                <label for="s_name">이름</label>
+                            </th>
+                            <td>
+                                <input type="text" name="u_name" 
+                                id="s_name" class="join"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="req"></span>
+                                <label for="s_id">아이디</label>
+                            </th>
+                            <td>
+                                <p class="guide_txt">6~12자리의 영문, 숫자(혼용 가능)를 입력해 주세요.</p>
+                                <input type="text" name="u_id" 
+                                id="s_id" class="join"/>
+                                <span class="btn b_bdcheck">
+                                    <a href="">중복확인</a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="req"></span>
+                                <label for="s_pw">비밀번호</label>
+                            </th>
+                            <td>
+                                <p class="guide_txt">안전을 위해 10개 이상의 문자조합, 영문 대소문자 + 숫자 또는 기호(!~@)를 입력해 주세요.</p>
+                                <input type="password" name="u_pw" 
+                                id="s_pw" class="join"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="req"></span>
+                                <label for="s_pw2">비밀번호 확인</label>
+                            </th>
+                            <td>
+                                <p class="guide_txt">입력하신 비밀번호 확인을 위해 다시 한번 입력해 주세요.</p>
+                                <input type="password" name="u_pw2" 
+                                id="s_pw2" class="join"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="req"></span>
+                                <label for="s_nid">닉네임</label>
+                            </th>
+                            <td>
+                                <p class="guide_txt">닉네임은 한글 1~6자, 영문 대소문자 2~12자, 숫자 사용이 가능하며, 욕설이나 비속어는 닉네임으로 사용 불가합니다.</p>
+                                <input type="text" name="u_nid" 
+                                id="s_nid" class="join" placeholder="닉네임"/>
+                                <span class="btn b_bdcheck">
+                                    <a href="">중복확인</a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="req"></span>
+                                <label for="s_nid">주소</label>
+                            </th>
+                            
+                            <!-- /************
+                            테이블형식 dl,dt,dd -->
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <span class="btn post_num">
+                                                <a href="#">우편번호찾기</a>
+                                            </span>
+                                        </dt>
+                                        <dd>
+                                            <input type="text" name="u_addr" 
+                                        id="s_addr" class="join"/>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="fr">
+                                            <label for="s_addr2">기본주소</label>
+                                        </dt>
+                                        <dd>
+                                            <input type="text" name="u_addr2" 
+                                        id="s_addr2" class="join" style="width: 300px;"/>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="fr">
+                                            <label for="s_addr3">상세주소</label>
+                                        </dt>
+                                        <dd>
+                                            <input type="text" name="u_addr3" 
+                                        id="s_addr3" class="join" style="width: 300px;"/>
+                                        </dd>
+                                    </dl>
+                                </td>
+                            <tr>
+                                <th>
+                                    <label for="s_give">관심기부대상</label>
+                                </th>
+                                <td>
+                                    <input type="checkbox" id="s_give"
+                                    value="아동" name="u_give"/>
+                                    <label for="s_give">아동</label>
+                                    &nbsp;
+                                    <input type="checkbox" id="s_give2"
+                                    value="노인" name="u_give2"/>
+                                    <label for="s_give2">노인</label>
+                                    &nbsp;
+                                    <input type="checkbox" id="s_give3"
+                                    value="건강" name="u_give3"/>
+                                    <label for="s_give3">건강</label>
+                                    &nbsp;
+                                    <input type="checkbox" id="s_give4"
+                                    value="문화" name="u_give4"/>
+                                    <label for="s_give4">문화</label>
+                                    &nbsp;
+                                    <input type="checkbox" id="s_give5"
+                                    value="재능" name="u_give5"/>
+                                    <label for="s_give5">재능</label>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn_area">
+                    <span class="btn b_ok">
+                        <a href="#">확인</a>
+                    </span>
+                    <span class="btn b_cancel">
+                        <a href="#">취소</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+                        

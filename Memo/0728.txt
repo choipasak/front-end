@@ -1,0 +1,18 @@
+0728
+클래스2개를 쓸때 두번째 클래스는 위치적인 정보를가지고잇다 왼쪽오른쪽가운데,,
+인라인레벨안에는 인라인레벨만 작성가능
+제목길어서 자를게 : ellipse
+패딩을 주면 안에 컨텐츠를 좁혀보리는게아니라 걍 박스 크기를 입력한 패딩크기만큼 늘리는거임
+background: url(../0727_image/이미지/gra_bg.png) repeat-x; -> x축으로만 repeat해라~
+background-position각자 주는거 말고 걍 첫번째부터 마지막까지 한번에 주는거는 -> 
+태그=엘리멘트=노드(좀더 큰 개념이긴함)
+#contents .news_tpye:nth-child(1) .title {background-position: 0 0;}
+.title을 가지고잇는 1번째 애한테 내용적용
+text-overflow: ellipsis; -> 지정한 width크기에 맞게 넘어가면 ... 으로 표현해주는 기능
+white-space: nowrap; -> 스페이스바, 탭 줄바꿈 등을 공백 1칸으로 표현 
+id 내가 이 문서에서 따로 가져가서 뭐 css로 꾸밀라하는거
+class는 여러개의 요소를 한꺼번에 내가 지정해서 모양을 똑같은 형태로 지정하고싶을 때 쓰는거임
+그니까 똑같은 모양내고싶으면 class
+  걍 꾸밀라고하면 id
+그래서 아이디선택자가 class선택자보다 우선순위가 높아
+position 잡아줄때 해당하는 칸을 기준으로 absolute 잡고싶으면 그 해당칸에 position: relative; 해주고 -> 원래 파트에 absolute 하고 좌표잡아주면됨!

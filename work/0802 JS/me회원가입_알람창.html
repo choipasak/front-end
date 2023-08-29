@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form {
+            width: 300px;
+            height: 400px;
+            border: 3px solid pink;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" class="form">
+        <p>
+            <label for="s_id">아이디</label>
+            <input type="text" name="data" id="s_id"/>
+        </p>
+        <p>
+            <label for="s_pw">비밀번호</label>
+            <input type="password" name="data" id="s_pw"/>
+        </p>
+        <p>
+            <label for="s_name">이름</label>
+            <input type="text" name="data" id="s_name"/>
+        </p>
+        <p>
+            <label for="s_email">이메일</label>
+            <input type="email" name="data" id="s_email"/>
+        </p>
+        <button type="button" onclick="check()">확인</button>
+        
+    </form>
+
+    <script>
+        // prompt or alert
+        
+        // alert("이 페이지의 내용<br/>")
+        // let ps = document.getElementsByTagName("p");
+        // document.get(up_names[0].tagName);
+        
+        
+        
+        
+        function check() {
+            
+            // let sid = document.getElementById("s_id");
+            // let id = document.getElementById("s_id");
+            // let pw = document.getElementsByName("data")[1].value;
+            // let name = document.getElementsByName("data")[2].value;
+            // let email = document.getElementsByName("data")[3].value;
+            
+            // let idd = document.getElementById("s_id").value;
+            // let getname = document.getElementsByTagName("input");
+            
+            let ele = document.getElementsByTagName("input").value;
+            let arr = [ele];
+            
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] == "");
+                    let gn = arr[i].value;
+                    alert(gn+"을(를) 입력해주세요.");
+                    
+                    return false;
+            }
+
+
+            
+        }
+
+
+
+    </script>
+</body>
+</html>

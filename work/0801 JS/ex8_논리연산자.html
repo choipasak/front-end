@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        //논리연산자는 &&(그리고), ||(또는), !(부정)
+        let a = 10;
+        let b = 8;
+        
+        let c = (a > b && b != 0);
+        document.write(c); //true
+
+        c = (++a < b-- && ++a != 0); //첫번째 조건이 true여야 뒷조건도 수행이 가능하다.
+        document.write("<br/>");
+        document.write(a);
+        document.write("<br/>");
+        document.write(b);
+        document.write("<br/>");
+        document.write(c);
+        
+        c = (++a < b-- || ++a != 0); //얘는 첫번째 조건이 true가 나오면 뒷조건을 수행하지 않는다.
+        document.write("<br/>");
+        document.write(a);
+        document.write("<br/>");
+        document.write(b);
+        document.write("<br/>");
+        document.write(c);
+
+    </script>
+</body>
+</html>

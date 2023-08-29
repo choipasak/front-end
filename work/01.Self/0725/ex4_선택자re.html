@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        #t1>tbody>tr>td,th { /*이게 자식선택자*/
+            border: 1px solid #000;
+        }
+        #t2 td{
+            border: 1px solid #000;
+        }
+        #t1 th{
+            background-color: rgb(64, 128, 184);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <table id="t1" summary="연습1">
+            <caption>CSS선택자연습</caption>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>*</th>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>*</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>*</td>
+                </tr>
+                <tr>
+                    <td colspan="4">자료제공 : 한국ICT협회</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="t2" summary="연습2">
+            <caption>CSS선택자연습</caption>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>*</th>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>*</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>*</td>
+                </tr>
+                <tr>
+                    <td colspan="4">자료제공 : 한국ICT협회</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

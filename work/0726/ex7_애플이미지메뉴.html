@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 982x142 세로 38px 가로 136px */
+        body {
+            /* border: 1px solid pink; */
+            padding: 0;
+            margin: 0;
+        }
+        #menu {
+            border: 1px solid pink;
+            width: 982px;
+            height: 38px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: url(./images/apple_menu.gif) no-repeat;
+            font-size: 0;  /*이거왜?????????????*/
+            word-spacing: 0;
+        }
+        #menu>li {
+            /* 인라인레벨이면서 크기 변경이 가능한 inline-block으로 지정함!*/
+            display: inline-block;
+            width: 136px;
+            height: 38px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        #menu a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            text-indent: -9999px;
+            background: url(images/apple_menu.gif) left top no-repeat;
+        }
+
+        #store>a {background-position: -136px 0px;}
+        #mac>a {background-position: -272px 0px;}
+        #ipod>a {background-position: -408px 0px;}
+        #download>a {background-position: -544px 0px;}
+        #support>a {background-position: -680px 0px;}
+        
+        #apple>a:hover {background-position: 0px -38px;}
+        #store>a:hover {background-position: -136px -38px;}
+        #mac>a:hover {background-position: -272px -38px;}
+        #ipod>a:hover {background-position: -408px -38px;}
+        #download>a:hover {background-position: -544px -38px;}
+        #support>a:hover {background-position: -680px -38px;}
+
+        #apple>a:active {background-position: 0px -76px;}
+        #store>a:active {background-position: -136px -76px;}
+        #mac>a:active {background-position: -272px -76px;}
+        #ipod>a:active {background-position: -408px -76px;}
+        #download>a:active {background-position: -544px -76px;}
+        #support>a:active {background-position: -680px -76px;}
+
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <ul id="menu">
+            <li id="apple"><a href="" class="selected">apple</a></li>
+            <li id="store"><a href="">store</a></li>
+            <li id="mac"><a href="">mac</a></li>
+            <li id="ipod"><a href="">ipod</a></li>
+            <li id="download"><a href="">download</a></li>
+            <li id="support"><a href="">support</a></li>
+        </ul>
+    </div>
+</body>
+</html>

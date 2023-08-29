@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ol태그이면서 아이디가 menu인 요소 선택 */
+        ol#menu {
+            /* border: 1px solid red; 이게 ol의 영역*/
+            width: 200px;
+            list-style: none; /* 앞에 숫자나 점을 없애주기 */
+            padding-left: 0; /* 왼쪽에 있는 안쪽 여백을 없앤다. */
+            border-top: 1px solid rgb(60, 60, 93); /* 메뉴 틀의 맨 윗줄만 추가해줌 */
+        }
+        ol#menu>li { /* ol태그이면서 아이디가 menu인 요소의 자식들 중 li인 요소 */
+            border: 1px solid rgb(60, 60, 93); /* 전체 보더테두리 둘러줌 */
+            height: 70px;
+            border-top: none;
+        }
+        ol#menu>li>a {
+            display: block; /* 인라인레벨인 a태그를 블록레벨로 변환 */
+            width: 100%;
+            height: 100%;
+            text-align: center; /* 수평선상의 가운데 맞춤 */
+            line-height: 70px; /* 라인의 높이는 %를 인식하지 못하여 명시되있는 li값을 입력해준다. */
+            font-size: 20px;
+            font-weight: bold;
+            background-color: aliceblue;
+            color: rgb(46, 53, 132);
+            text-decoration: none;
+        }
+        ol#menu>li>a:hover { /* a태그에 마우스가 올라 갔을 때 색반전 */
+            background-color: rgb(46, 53, 132);
+            color: aliceblue;
+        }
+    </style>
+    </head>
+<body>
+    <div id="nav">
+        <header>
+            <h1>수직메뉴</h1>
+        </header>
+        <ol id="menu">
+            <li><a href="">메&nbsp;&nbsp;일</a></li>
+            <li><a href="">카&nbsp;&nbsp;페</a></li>
+            <li><a href="">블로그</a></li>
+            <li><a href="">지식in</a></li>
+        </ol>
+    </div>
+</body>
+</html>

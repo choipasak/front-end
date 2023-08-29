@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #results{
+            border-top: 2px solid #ababab;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Local Storage예제</h1>
+    </header>
+    <div id="form">
+        <form id="travelForm">
+            <table class="form">
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="button">
+                            <input type="button" value="Go" onclick="addData()"/>
+                            <input type="button" value="Clear Storage" onclick="clearStorage()"/>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td class="label">Traveler</td>
+                        <td>
+                            <input type="text" name="traveler" id="traveler"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Destination</td>
+                        <td>
+                            <input type="text" name="destination" id="destination"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Transportation</td>
+                        <td>
+                            <input type="text" name="transportation" id="transportation"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div id="results">
+        <!-- 저장된 storage값을 표현할 곳! -->
+    </div>
+
+    <script>
+        //받은 키가 뭔지 모르는 상태.
+        let db = getStorage(); //제일먼저 호출되는 함수(localStorage가 호출이 되는지)
+        let result; // 결과를 담을 변수
+        let res; // id="results"인 요소에 담을 내용 담을 변수
+
+        window.onload = function(){ //document가 다 로드되면읽고나서 제일먼저 호출 될 함수
+            res = document.getElementById("results");
+            viewData(); // document가 새롭게 저장될때마다 viewData()호출!
+        };
+        function getStorage() { 
+            //localStorage 속성은 사용자의 local의 Storage객체에 접근하게 해준다.
+            try{
+                if(window.localStorage){
+                    return localStorage;
+                }
+            }catch(e){ //QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ -> 이거 exception의 e
+                return undefined;
+            };
+        };
+
+        
+        function addData() {
+            // 데이터를 스토리지에 저장하기위해 먼저 데이터의 값을 변수선언
+            let a1 = document.getElementById("traveler").value;
+            let a2 = document.getElementById("destination").value;
+            let a3 = document.getElementById("transportation").value;
+            
+            // 선언한 변수들을 데이터에 넣어준다.
+            // 키와 함께 저장소에 저장@(setItem() 사용)
+            db.setItem("transportation",a3); // 저장소에 3개 다 저장! 걍 랜덤가챠마냥 랜덤저장됨 어이없음
+            db.setItem("destination",a2);
+            db.setItem("traveler",a1);
+            
+            // 그리고 만든 viewData()를 여기에도 심어줌 왜냐면 addData에서 뽑아낸 데이터를 id="results"에 내보내고 싶기 때문
+            viewData();
+
+        };
+
+        function clearStorage() {
+            db.clear(); //스토리지 비우는(clear) 함수
+        };
+        
+        function viewData() { // 이 함수는 받은 키가 뭔지 모를때(변수명까지 아예모르는게아니라 짝이? 안맞춰진 키와 값들을 받았을때)
+            // 키의 변수들을 하나씩 뽑아서
+            // results에 저장한다.
+            result = ""; 
+            //QQQQQQQQQQQQQQQQQQQQ
+            // ㄴ 이거는 result에 담아서 for문안에서사용하고 끝나면 res변수에 결과를 다 합쳐서 담는다
+
+            for(let i = 0; i < db.length; i++){
+                // 먼저 key 변수선언 (db에서 key()로 i번째들 다 가져온다)
+                let key = db.key(i);
+
+                // 가져온 키의 값을 받아() 변수선언
+                let value = db.getItem(key);
+
+                // 키와 value값 results에 저장
+                result += key +":"+ value +"<br/>";
+                
+            }
+
+            //그리고 id="results"인 div의 칸에 나타나게 하고싶어요
+            // 그리고 id="results"를 res라는 변수에 위에서 담음
+            res.innerHTML = result;
+            console.log("!");
+        };
+        
+    </script>
+</body>
+</html>

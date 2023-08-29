@@ -1,0 +1,194 @@
+@charset "UTF-8";
+@import "common.css";
+
+
+#contents {
+    /* border: 1px solid; */
+    width: 900px;
+    height: auto;
+    margin: auto;
+    /* padding-bottom: 50px; */
+}
+.title_src {
+    margin-top: 0px;
+}
+.guide_txt {
+    /* border: 1px solid; */
+    position: relative;
+    color: #777;
+    font-size: 12px;
+    padding-bottom: 7px;
+}
+.txt_r {
+    /* border: 1px solid pink; */
+    display: inline-block;
+    /* width: 120px; */
+    color: #777;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+}
+.req {
+    /* border: 1px solid greenyellow; */
+    display: inline-block;
+    width: 10px;
+    height: 8px;
+    text-indent: -9999px;
+    background: url(../0727_image/이미지/bult.png)no-repeat;
+}
+
+/*************
+테이블 작업
+*************/
+.table_type {
+    width: 900px;
+    border-collapse: collapse;
+    /* border: 1px solid #ddd;
+    border-left: none;
+    border-right: none; */
+    border: none;
+}
+.table_type th {
+    border: 1px solid #ddd;
+    border-left: none;
+    font-weight: bold;
+    padding: 10px 0 10px 10px;
+    background-color: #efefef;
+    text-align: left;
+}
+.table_type td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-right: none;
+}
+.join {
+    padding:3px 4px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.b_bdcheck {
+    display: inline-block;
+    width: 58px;
+    background-position-y: -150.2px;
+    height: 24px;
+    position: absolute;
+    margin-left: 10px;
+}
+.b_find {
+    display: inline-block;
+    background-position: -60px -150.2px;
+    height: 24px;
+    width: 80px;
+    position: relative;
+}
+.find_adress {
+    display: inline-block;
+    /* margin-left: 87px; */
+    position: absolute;
+    margin-left: 3px;
+}
+.f_address p {
+    padding: 7px;
+    width: 100%;
+}
+.f_address p label,.b_find {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+}
+.long_input input {
+    width: 400px;
+    /* border: 1px solid pink; */
+}
+.u_birth {
+    padding: 0 5px;
+}
+.interest {
+    padding: 10px;
+}
+.unum {
+    width: 50px;
+}
+.b_num {
+    display: inline-block;
+    width: 60px;
+    background-position: -140px -150.2px;
+    height: 24px;
+    position: absolute;
+    margin-left: 10px;
+    position: absolute;
+}
+.f_address .info_width {
+    width: 100px;
+    position: absolute;
+}
+.u_emailf {
+    /* border: 1px solid pink; */
+    width: 80px;
+}
+.email_wid input, select {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+
+dt{
+    display: inline-block;
+    width: 90px;
+    height: 30px;
+    /* border: 1px solid blue; */
+    line-height: 30px;
+}
+dd {
+    display: inline-block;
+    width: 190px;
+    line-height: 30px;
+}
+.post_num {
+    width: 80px;
+    height: 25px;
+    background-position: -58px -150px;
+    vertical-align: top;
+}
+.fr {text-align: right;}
+
+/* .btn_area {
+    /* border: 1px solid pink; 
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 30px;
+}
+.b_ok {
+    display: inline-block;
+    /* border: 1px solid pink; 
+    width: 64px;
+    background-position: 0 -110px;
+}
+.b_cancel {
+    display: inline-block;
+    /* border: 1px solid pink; 
+    background-position: -100px -110px;
+    /* width: 64px; 
+} */
+.btn_area {
+    margin-top: 30px;
+    text-align: center;
+}
+.btn_area span {
+    margin-top: 30px;
+    padding: 3px 0;
+    width: 65px;
+    height: 27px;
+}
+.b_ok {
+    background-position: 0 -110px;
+}
+.b_cancel {
+    background-position: -100px -110px;
+}

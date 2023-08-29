@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1 {
+            border-collapse: collapse;
+            width: 300px;
+        }
+        #t1 td, th{
+            border: 1px solid;
+
+        }
+    </style>
+</head>
+<body>
+    <table id="t1">
+        <colgroup>
+            <col width="150px"/>
+            <col width="*"/>
+            <col width="50px"/>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>항목1</td>
+                <td>비고</td>
+                <td><button type="button">삭제</button></td>
+            </tr>
+            <tr>
+                <td>항목2</td>
+                <td>비고</td>
+                <td><button type="button">삭제</button></td>
+            </tr>
+            <tr>
+                <td>항목3</td>
+                <td>비고</td>
+                <td><button type="button">삭제</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){ //~jQuery 도입부~
+            
+            let table = document.getElementById("t1");
+            
+            $("#t1 tr").bind("mouseover", function () {//익명함수 부여
+            //해당 행(tr)의 배경색을 변경하고자 한다.
+            
+                $(this).css("backgroundColor", "#aceeee"); //this에 $()씌워서 jQuery식으로 만들기
+                //현재 행의 번호를 알아내자!
+                //각 행의 번호는 해당 행객체(this) 알고 있다.
+                let rowIdx = this.rowIndex; //tr에 row-index라는 속성이 있어서 가져온거임
+                console.log(rowIdx);//변수잡기싫으면 바로 이렇게 하면 된다
+                table.rowIdx = rowIdx; //table.rowIdx는 위의 로직에 따로 적어준 rowIdx고 = 다음의 rowIdx는 바로위에서 선언한 rowIdx
+            });
+
+
+            $("#t1>tbody>tr").bind("mouseout", function () {
+                $(this).css("backgroundColor", "#ffffff"); 
+            });
+
+            $("#t1>tbody>tr>td>:button").bind("click", function(){
+                // 이미 table이라는 곳에 rowIdx라는 속성으로 저정된
+                // 행번호를 값을 얻어내자!
+                let rowNum = table.rowIdx; //mouseover시 저장했던 행번호 호출
+                table.deleteRow(rowNum); //행삭제기능부여
+            });
+
+         });
+            
+        /*function overTr(c_tr) {
+            //해당 행(tr)의 배경색을 변경하고자 한다.
+            //인자를 준것도아니고 jquery도 안해서 접근 방법이 없어짐
+            c_tr.style.backgroundColor = "#aceeee";
+        }
+            c_tr.style.backgroundColor = "#ffffff"; //c_tr은 지역변수이기때문에 또 써도 ㄱㅊ
+        }*/
+    </script>
+</body>
+</html>

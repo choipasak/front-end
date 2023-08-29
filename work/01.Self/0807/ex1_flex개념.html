@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            list-style: none;
+            padding-left: 0;
+            border: 1px solid green;
+            width: 80%;
+            height: 120px;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            /* flex-wrap: nowrap;  */
+            /* 이거 보더설정했다가 크기 넘치는거 보기싫을 때 넣으면 되겠다 */
+            border-collapse: collapse;
+            /* justify-content: space-between; */
+        }
+        .item {
+            border: 1px solid;
+            width: 190px;
+            background-color: lightblue;
+            /* flex-grow: 1; */
+            /* 이거는 그냥 비율로 꽉채우기 */
+            flex-shrink: auto;
+        }
+    </style>
+</head>
+<body>
+    <ul class="container">
+        <li class="item">항목1</li>
+        <li class="item">항목2</li>
+        <li class="item">항목3</li>
+        <li class="item">항목4</li>
+        <li class="item">항목5</li>
+    </ul>
+</body>
+</html>

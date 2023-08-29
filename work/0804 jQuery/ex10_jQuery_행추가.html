@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1 {
+            width: 300px;
+            border-collapse: collapse;
+        }
+        #t1 th, #t1 td {
+            border: 1px solid green;
+            padding: 4px;
+        }
+        #t1 caption {
+            text-indent: -9999px; 
+            height: 0;
+            /* 캡션을 안보이게한다음 없애버렸음 */
+        }
+        #t1>thead>tr:first-child>td { /* thead안에 첫번째 tr안에 td를 선택한거임 */
+            text-align: right;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="" method="post" id="frm">
+        <label for="s_name">이름</label>
+        <input type="text" name="u_name" id="s_name"/>
+        <br/>
+        <label for="s_phone">연락처</label>
+        <input type="tel" name="u_phone" id="s_phone"/>
+        <br/>
+        <input type="button" value="확인" id="btn"/>
+        <!-- 위 버튼을 클릭할 때 사용자가 입력한 이름과
+        연락처들을 가지고 아래의 table에 행으로 추가! -->
+    </form>
+
+    <table id="t1">
+        <caption>행추가 테이블</caption>
+        <thead>
+            <tr>
+                <td colspan="3">
+                    <input type="button" value="추가" name=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>연락처</th>
+                <th>삭제</th>
+
+            </tr>
+        <tbody></tbody>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            //jQuery도입부분
+            let idx = 1;
+            $("#btn").click(function(){
+                //id="btn"인 요소를 클릭할 때마다 수행하는 곳
+                
+                let name = $("#s_name").val(); //사용자가 입력한 이름값 가져온거
+                let phone = $("#s_phone").val(); // 사용자가 입력한 전화번호값 가져온거
+
+                let str = "<tr onmouseover='regidx(this)'>";
+                str += "<td>" +(idx++)+"</td>";
+                str += "<td>" +name+"</td>";
+                str += "<td>" +phone+"</td>";
+                str += "<td><input type='button' value='삭제' onclick='del()'></td>";
+                str += "</tr>";
+                
+                //str이 기억하고 있는 tr태그 문장을 tbody에 자식요소로 추가
+                $("#t1>tbody").append(str); // str을 추가해줄 tbody를 찾아서 append함수로 str을 추가해준거임 여기에는 children, appendchild같은것도 필요가없음
+
+            });
+        });
+        function regidx(nowTr) {
+            //아이디가 t1인 테이블에 rowIdx라는 이름으로 현재 tr의 인덱스를 저장하자
+            let table = document.getElementById("t1");
+            table.rowIdx = nowTr.rowIndex; //가져온 tr의 고유번호(rowIndex)를 table안에 rowIdx라는 이름을 저장해라.
+        }
+        function del() {
+            let table = document.getElementById("t1");
+            table.deleteRow(table.rowIdx);
+        }
+    </script>
+</body>
+</html>

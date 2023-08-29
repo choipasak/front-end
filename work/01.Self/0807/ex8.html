@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{
+            font-size: 20px;
+            font-weight: bold;
+            color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="적용" id="btn"/>
+    <div>
+        <p>야호</p>
+        <em>월요일</em>
+        첫번째 div
+    </div>
+    <div>
+        <p>몰디브</p>
+        <p>산토리니</p>
+        <p>그루토</p>
+    </div>
+    <p>가자~~@!</p>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $("div").eq(0).children().css("color","#f00");
+             //첫번째 div 자식요소들 color=red
+            //id="btn"인 버튼을 눌렀을때
+            let flag = true;
+            $("#btn").on("click", function(){
+                //2번째 div가 test클래스를 적용되게 한다
+                $("div").eq(1).children().addClass("test");
+
+                //눌렀을때 value="해제"로 바뀌고 클래스지워지기
+            
+                
+                if (flag) {
+                    $("div").eq(1).children().addClass("test");
+                    $(this).val("해제");
+                }else{
+                    $("div").eq(1).children().removeClass("test");
+                    $(this).val("적용");
+                }
+                flag = !flag;
+            });
+        });
+    </script>
+</body>
+</html>
